@@ -140,6 +140,9 @@
   background-color: black;
   height: 50px;
 }
+.nav_bar {
+  height: 50px;
+}
 .nav_bar > ul {
   list-style-type: none;
   margin: 0;
@@ -197,6 +200,8 @@
 .slide {
   background-repeat: no-repeat;
   background-size:cover;
+  background-position-x: center;
+  background-position-y: center;
   float: left;
   height: 350px;
   width: 1260px;

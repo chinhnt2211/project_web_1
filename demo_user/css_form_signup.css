@@ -6,9 +6,17 @@
 body{
     margin: 0;
     padding:0;
-    background-image: url(./background_signup.jpg);
+    background-image: url(./bg_signup.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position-x: center;
+    min-height: 750px;
+}
+.content-wrapper{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    backdrop-filter: blur(4px);
 }
 .content{
     width: 1280px;
@@ -35,7 +43,7 @@ p{
 
 
 }
-.signup-wrapper .company-details:before {
+.signup-wrapper .company-details::before {
     content: "";
     position: absolute;
     display: block;
@@ -87,14 +95,13 @@ p{
     margin-top: 35px;
     text-align: center;
 }
-.signup-wrapper .signup-form .form input[type=text],.signup-wrapper .signup-form .form input[type=password]{
+.signup-wrapper .signup-form .form input[type=text],.signup-wrapper .signup-form .form input[type=password],
+.signup-wrapper .signup-form .form input[type=number]{
     border: none;
     border-bottom: 1px solid #e4e4e4;
     padding-top: 10px;
     padding-bottom: 10px;
     display: block;
-
-    text-align: center;
     width: 100%;
 }
 .signup-wrapper .signup-form .signup {
@@ -124,15 +131,16 @@ p{
 input::placeholder {
     color: #575757;
 }
-.signup-wrapper .company-details,
+.signup-wrapper .company-details ,
 .signup-wrapper .signup-form {
     width: 50%;
 }
 .signup-wrapper {
     display: flex;
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto;
     margin-top: 5%;
+    margin-bottom: 15%;
 }
 .signup-wrapper .company-details .wrapper-1 {
     padding-bottom: 150px;
