@@ -39,6 +39,11 @@ ul>li:hover{
     background: rgb(79, 79, 228);
 }
 
+ul>li.active{
+    background-color: orange;
+    color: white;
+}
+
 .toolbar{
     display: flex;
     justify-content: space-between;
@@ -74,4 +79,8 @@ table thead tr td{
 table tbody tr td{
     padding: 5px;
     border-bottom: 1px dashed #aaa;
+}
+
+.form{
+    padding: 10px;
 }
