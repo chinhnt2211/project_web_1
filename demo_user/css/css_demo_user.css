@@ -232,6 +232,7 @@ color: #ccc;
 .container_content{
   margin-top: 10px;
   margin-bottom: 140px;
+  min-height: 600px;
 }
 /* item content */
 .item_content {  
@@ -307,7 +308,6 @@ color: #ccc;
 }
 /* Footer */
 .container_footer{
-  align-self: flex-end;
   height: 120px; 
   background-color : black;
   justify-content: center;
