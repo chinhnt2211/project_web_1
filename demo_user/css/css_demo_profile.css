@@ -181,7 +181,7 @@ color: #ccc;
 /* Content */
 .container_content{
   padding: 10px;
-  height: 600px;
+  min-height: 600px;
 }
 .menu >ul{
   display: block;
@@ -212,7 +212,7 @@ color: #ccc;
   margin: 10px 10px 10px 0px;
 }
 .button_save {
-  margin: 20px 0px;
+  margin-top : 20px;
 }
 .button_save > button{
   cursor: pointer;
@@ -220,12 +220,11 @@ color: #ccc;
   border: 0px;
   padding: 10px;
   color: #fff;
-  background-color: #ee4d2d;
+  background-color: #cb1c22;
 }
 
 /* Footer */
 .container_footer{
-  align-self: flex-end;
   height: 120px; 
   background-color : black;
   justify-content: center;
