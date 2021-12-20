@@ -25,7 +25,7 @@ CREATE TABLE KHACHHANG(
 CREATE TABLE HOADON(
     id int not null primary key auto_increment,
     id_khachang int not null,
-    id_nhanvien int not null,
+    id_nhanvien int null,
     diachinhan varchar(200) not null,
     hotennhan varchar(100) not null,
     sodienthoainhan varchar(15) not null,
