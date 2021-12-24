@@ -1,3 +1,14 @@
+<?php
+require_once(__DIR__."/../core/core.php");
+
+if($id === NULL){
+    header("Location: /admin/login.php");
+    die();
+}
+
+$dulieu = select("SELECT * FROM theloai");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,13 +26,14 @@
     </h1>
     <ul>
         <li class="active"><a href="./">Danh mục</a></li>
-        <li><a href="./product.html">Sản phẩm</a></li>
-        <li><a href="./user.html">Người dùng</a></li>
-        <li><a href="./cart.html">Giỏ hàng</a></li>
+        <li><a href="./product.php">Sản phẩm</a></li>
+        <li><a href="./user.php">Người dùng</a></li>
+        <li><a href="./staff.php">Nhân sự</a></li>
+        <li><a href="./cart.php">Giỏ hàng</a></li>
     </ul>
     <div class="toolbar">
         <div>
-            <a href="./category_add.html">Thêm danh mục</a>
+            <a href="./category_add.php">Thêm danh mục</a>
         </div>
         <div>
             <form action=""><input type="search" name="search"><input type="submit" value="Tìm kiếm"></form>
@@ -39,36 +51,13 @@
                 </tr>
             </thead>
             <tbody>
+                <?php foreach($dulieu as $item){ ?>
                 <tr>
-                    <td>1</td>
-                    <td>Áo</td>
+                    <td><?=$item["id"]?></td>
+                    <td><?=$item["ten"]?></td>
                     <td>Sửa | Xoá</td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Áo</td>
-                    <td>Sửa | Xoá</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Áo</td>
-                    <td>Sửa | Xoá</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Áo</td>
-                    <td>Sửa | Xoá</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Áo</td>
-                    <td>Sửa | Xoá</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Áo</td>
-                    <td>Sửa | Xoá</td>
-                </tr>
+                <?php } ?>
             </tbody>
         </table>
 

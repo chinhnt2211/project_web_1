@@ -79,3 +79,40 @@ function update(string $table, array $data, string $where): void
 
     $mysqli->query($query);
 }
+
+
+// lấy dữ liệu từ csdl ra
+// cách dùng
+/*
+    $dulieu = select("SELECT * FROM NHANVIEN");
+
+    foreach($dulieu as $value){
+        echo $value["id"];
+        echo $value["hoten"];
+        echo $value["diachi"];
+        echo $value["sodienthoai"];
+        ...
+    }
+*/
+function select($query): array
+{
+    global $mysqli;
+    $result = [];
+
+    $data = $mysqli->query($query);
+    if ($data->num_rows > 0) {
+        while ($row = $data->fetch_assoc()) {
+            array_push($result, $row);
+        }
+    }
+
+    return $result;
+}
+
+// tương tác với query như thường, chỉ cần dùng
+// query("SELECT * FROM NHANVIEN")->num_rows;
+function query($query)
+{
+    global $mysqli;
+    return $mysqli->query($query);
+}
