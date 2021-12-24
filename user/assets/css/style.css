@@ -1,0 +1,36 @@
+
+.container-content{
+    height: 1000px;
+    width: 1300px;
+}
+
+li{
+    display: block;
+    float: left;
+}
+.list-items{
+    display: block;
+    border: 1px solid black;
+    list-style: none;
+    padding: 0px;
+    width: 1002px;
+    margin: 10px;
+}
+.items{
+    height: 350px;
+    width: 200px;
+    background-color: pink;
+    border: 1px solid black;
+    margin: 0px;
+}
+.items .image-item{
+    height: 180px;
+    width: 180px;
+    border: 1px solid black;
+    background-size: cover;
+    background-position: center;
+
+}
+.items .name-item{
+    margin: 10px;
+}

@@ -1,0 +1,9 @@
+
+
+.image-product{
+    height: 300px;
+    width: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
