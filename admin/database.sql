@@ -5,18 +5,21 @@ CREATE TABLE NHANVIEN (
     id int NOT NULL primary key auto_increment,
     hoten varchar(100) not null,
     sodienthoai varchar(15) not null,
-    diachia varchar(200) not null,
+    diachi varchar(200) not null,
     email varchar(100) not null,
     matkhau varchar(32) not null,
     anh varchar(100),
-    capdo int not null
+    capdo int(1) not null
 );
+
+ALTER TABLE nhanvien
+ADD CONSTRAINT UC_NHANVIEN_email UNIQUE (email)
 
 CREATE TABLE KHACHHANG(
     id int NOT NULL primary key auto_increment,
     hoten varchar(100) not null,
     sodienthoai varchar(15) not null,
-    diachia varchar(200) not null,
+    diachi varchar(200) not null,
     email varchar(100) not null,
     matkhau varchar(32) not null,
     anh varchar(100)
