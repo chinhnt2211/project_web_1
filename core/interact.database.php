@@ -94,7 +94,7 @@ function update(string $table, array $data, string $where): void
         ...
     }
 */
-function select($query): array
+function select(string $query): array
 {
     global $mysqli;
     $result = [];
@@ -111,7 +111,7 @@ function select($query): array
 
 // tương tác với query như thường, chỉ cần dùng
 // query("SELECT * FROM NHANVIEN")->num_rows;
-function query($query)
+function query(string $query)
 {
     global $mysqli;
     return $mysqli->query($query);
