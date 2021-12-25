@@ -15,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($kiemtra->num_rows > 0) {
             $_SESSION["staff_id"] = $kiemtra->fetch_assoc()["id"];
-            header("Location: /admin/");
+            // Test nen ko de ban goc
+            header("Location: ../admin/"); 
         } else {
             $error_message = "Tài khoản và mật khẩu vừa nhập không chính xác";
         }

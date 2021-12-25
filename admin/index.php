@@ -2,7 +2,8 @@
 require_once(__DIR__."/../core/core.php");
 
 if($id === NULL){
-    header("Location: /admin/login.php");
+    // Test nen sua cho nay
+    header("Location: ./login.php");
     die();
 }
 
