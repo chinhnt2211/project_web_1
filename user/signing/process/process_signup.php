@@ -1,13 +1,17 @@
 <?php
-session_start();
-require_once("../../lib/db/dbhelpler.php");
-require_once("../../lib/php/functions.php");
+require_once __DIR__."/../../../core/core.user.php";
+
+function createAccessToken($email, $password){
+    $timestamp = time();
+    $str = "$email" + "$timestamp" + "$password";
+    return md5($str);
+}
 
 $name = addslashes($_POST['fullname']);
 $email = addslashes($_POST['email']);
 $phone_number = addslashes($_POST['phone_number']);
 $password = addslashes($_POST['password']);
-$avatar = '';
+$avatar = DOMAIN.'user/signing/assets/image/avatar_default.png';
 $token = createAccessToken($email,$password);
 $sql = "insert into KHACHHANG (hoten,sodienthoai,diachi,email,matkhau,anh,token)
 values('$name' , '$phone_number' , '' , '$email' , '$password' , '$avatar', '$token')";

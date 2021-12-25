@@ -1,6 +1,9 @@
 <!--Header -->
-<?php require_once("../includes/header.php"); ?>
+<?php require_once "../includes/header.php" ?>
 <!-- Content -->
+<style>
+    @import url("./assets/css/order.css");
+</style>
 <div class="container_content">
     <div class="row">
         <div class="menu col-3">

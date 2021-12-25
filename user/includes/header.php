@@ -1,7 +1,5 @@
 <?php
-require_once(__DIR__ . "/../lib/php/functions.php");
-require_once(__DIR__ . "/../lib/core/core.php");
-session_start();
+require_once __DIR__."/../../core/core.user.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +10,6 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= DOMAIN ?>user/includes/assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Document</title>
 </head>
 
@@ -21,8 +18,7 @@ session_start();
     <div class="container-header">
         <h1>Xin chào</h1>
         <?php
-        checkCookie(isset($_COOKIE['remember']));
-        if (isset($_SESSION["id"])) {
+        if (isset($_SESSION["id"])){
             echo $_SESSION["name"];
         ?>
             <div class="avatar" style="background-image: url('<?= $_SESSION['avatar'] ?>')"></div>

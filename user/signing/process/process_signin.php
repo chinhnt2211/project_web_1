@@ -1,6 +1,5 @@
 <?php
-require("../../lib/db/dbhelpler.php");
-session_start();
+require_once __DIR__."/../../../core/core.user.php";
 
 $email = $_POST['email'];
 $password = $_POST['password'];
