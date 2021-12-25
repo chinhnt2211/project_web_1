@@ -7,7 +7,7 @@ if($id === NULL){
     die();
 }
 
-$dulieu = select("SELECT * FROM theloai");
+$dulieu = select("SELECT * FROM nhasanxuat");
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +26,8 @@ $dulieu = select("SELECT * FROM theloai");
         Bảng điều khiển
     </h1>
     <ul>
-        <li class="active"><a href="./">Danh mục</a></li>
-        <li><a href="./brand.php">Nhà sản xuất</a></li>
+        <li><a href="./">Danh mục</a></li>
+        <li class="active"><a href="./brand.php">Nhà sản xuất</a></li>
         <li><a href="./product.php">Sản phẩm</a></li>
         <li><a href="./user.php">Người dùng</a></li>
         <li><a href="./staff.php">Nhân sự</a></li>
@@ -35,7 +35,7 @@ $dulieu = select("SELECT * FROM theloai");
     </ul>
     <div class="toolbar">
         <div>
-            <a href="./category_add.php">Thêm danh mục</a>
+            <a href="./brand_add.php">Thêm nhà sản xuất</a>
         </div>
         <div>
             <form action=""><input type="search" name="search"><input type="submit" value="Tìm kiếm"></form>
