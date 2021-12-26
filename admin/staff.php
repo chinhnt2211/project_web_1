@@ -4,10 +4,10 @@ require_once(__DIR__ . "/../core/core.php");
 if ($sid === NULL) {
     // Test nen sua cho nay
     header("Location: ./login.php");
-    exit();
+    die();
 }
 
-$dulieu = select("SELECT * FROM theloai");
+$dulieu = select("SELECT * FROM nhanvien");
 ?>
 
 <!DOCTYPE html>
@@ -26,16 +26,16 @@ $dulieu = select("SELECT * FROM theloai");
         Bảng điều khiển
     </h1>
     <ul>
-        <li class="active"><a href="./">Danh mục</a></li>
+        <li><a href="./">Danh mục</a></li>
         <li><a href="./brand.php">Nhà sản xuất</a></li>
         <li><a href="./product.php">Sản phẩm</a></li>
         <li><a href="./user.php">Người dùng</a></li>
-        <li><a href="./staff.php">Nhân sự</a></li>
+        <li class="active"><a href="./staff.php">Nhân sự</a></li>
         <li><a href="./cart.php">Giỏ hàng</a></li>
     </ul>
     <div class="toolbar">
         <div>
-            <a href="./category_add.php">Sửa danh mục</a>
+            <a href="./staff_add.php">Thêm nhân sự</a>
         </div>
         <div>
             <form action=""><input type="search" name="search"><input type="submit" value="Tìm kiếm"></form>
@@ -48,7 +48,12 @@ $dulieu = select("SELECT * FROM theloai");
             <thead>
                 <tr>
                     <td>ID</td>
-                    <td>Tên danh mục</td>
+                    <td>Họ tên</td>
+                    <td>Số điện thoại</td>
+                    <td>Địa chỉ</td>
+                    <td>Email</td>
+                    <td>Ảnh</td>
+                    <td>Cấp độ</td>
                     <td>Thao tác</td>
                 </tr>
             </thead>
@@ -56,8 +61,13 @@ $dulieu = select("SELECT * FROM theloai");
                 <?php foreach ($dulieu as $item) { ?>
                     <tr>
                         <td><?= $item["id"] ?></td>
-                        <td><?= $item["ten"] ?></td>
-                        <td> <a href="./category_edit.php?id=<?= $item["id"] ?>">Sửa</a> | <a href="./category_delete.php?id=<?= $item["id"] ?>">Xoá</a></td>
+                        <td><?= $item["hoten"] ?></td>
+                        <td><?= $item["sodienthoai"] ?></td>
+                        <td><?= $item["diachi"] ?></td>
+                        <td><?= $item["email"] ?></td>
+                        <td><img src="<?= $item["anh"] ?>" /></td>
+                        <td><?= $item["capdo"] ?></td>
+                        <td> <a href="./staff_edit.php?id=<?= $item["id"] ?>">Sửa</a> | <a href="./staff_delete.php?id=<?= $item["id"] ?>">Xoá</a></td>
                     </tr>
                 <?php } ?>
             </tbody>
