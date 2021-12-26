@@ -1,7 +1,24 @@
 # Đồ Án 1
 *Một dự án về web bán hàng rất là cơ bản*
+## HƯỚNG DẪN SỬ DỤNG
+Clone github
+```
+git clone https://github.com/chinhnt2211/project_web_1.git
+```
 
-
+Chỉnh sửa file `config.php` trong thư mục `core/config.php`
+```
+define("DOMAIN" , 'http://localhost/PHP_WEB/project_web_1/');
+define('HOST', '127.0.0.1');
+define('USERNAME', 'root');
+define('PASSWORD', '22112002');
+define('DATABASE', 'project_web_1');
+```
+>+ `DOMAIN` : Địa chỉ đặt dự án 
+>+ `HOST` : Địa chỉ CSDL
+>+ `USERNAME` : Username CSDL
+>+ `PASSWORD` : Password CSDL
+>+ `DATABASE` : Database CSDL
 ## BÁN HÀNG ĐIỆN TỬ
 *Chú ý*
 >Mọi tài liệu thông tin đều được lưu vào thư mục [Document](/Document)
