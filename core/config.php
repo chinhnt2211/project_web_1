@@ -4,5 +4,5 @@ define("DOMAIN" , 'http://localhost/PHP_WEB/project_web_1/');
 // Cai dat thong tin database vao day
 define('HOST', '127.0.0.1');
 define('USERNAME', 'root');
-define('PASSWORD', '');
+define('PASSWORD', '22112002');
 define('DATABASE', 'project_web_1');

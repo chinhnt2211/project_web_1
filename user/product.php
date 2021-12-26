@@ -14,7 +14,7 @@ function check_id(){
 function show_product_infor($id){
     $sql = "select * from SANPHAM
     where id = '$id'";
-    $result = executeResult($sql);
+    $result = select($sql)[0];
     return $result;
 }
 
@@ -22,7 +22,7 @@ function name_producer(){
     $id = check_id()["id_nhasanxuat"];
     $sql = "select ten from NHASANXUAT
     where id = '$id'";
-    $result = executeResult($sql);
+    $result = select($sql)[0];
     return $result;
 }
 ?>
@@ -50,7 +50,7 @@ function name_producer(){
                 <p><?= $item['mota'] ?></p>
             </div>
             <div class="button-save">
-                <button>Thêm vào giỏ hàng</button>
+                <a href="add_cart_product.php?cart=<?=$_GET["id"] ?>">Thêm vào giỏ hàng</a>
             </div>
 
         </div>

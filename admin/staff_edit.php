@@ -6,7 +6,7 @@ $error_message = "";
 
 // kiểm tra thông tin id xem tồn tại không
 $id = isset($_GET["id"]) ? $_GET["id"] : NULL;
-$kiemtra = query("SELECT * FROM nhanvien WHERE id = '{$id}'");
+$kiemtra = query("SELECT * FROM NHANVIEN WHERE id = '{$id}'");
 $dulieu = $kiemtra->fetch_assoc();
 
 if ($kiemtra->num_rows === 0) {
@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $anh = isset($_POST["anh"]) ? addslashes($_POST["anh"]) : NULL;
     $capdo = isset($_POST["capdo"]) ? addslashes($_POST["capdo"]) : NULL;
 
-    if ($hoten && $sdt && $diachi && $email && $anh && !empty($capdo)) {
+    if ($hoten && $sdt && $diachi && $email && $anh) {
 
         // kiểm tra tên này đã được dùng chưa?
-        $kiemtra = query("SELECT * FROM nhanvien WHERE email = '{$email}' and id != '{$id}'");
+        $kiemtra = query("SELECT * FROM NHANVIEN WHERE email = '{$email}' and id != '{$id}'");
 
         if ($kiemtra->num_rows === 0) {
 
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($matkhau != NULL)
                 $data["matkhau"] = $hashmd5;
 
-            update("nhanvien", $data, "id = '{$id}'");
+            update("NHANVIEN", $data, "id = '{$id}'");
 
             header("Location: ./staff.php");
             exit();

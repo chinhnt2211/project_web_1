@@ -7,24 +7,24 @@ $error_message = "";
 // kiểm tra thông tin form nhập đủ ko
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $hoten = isset($_POST["hoten"]) ? addslashes($_POST["hoten"]) : NULL;
-    $sdt = isset($_POST["sdt"]) ? addslashes($_POST["sdt"]) : NULL;
-    $diachi = isset($_POST["diachi"]) ? addslashes($_POST["diachi"]) : NULL;
-    $email = isset($_POST["email"]) ? addslashes($_POST["email"]) : NULL;
-    $matkhau = isset($_POST["matkhau"]) ? addslashes($_POST["matkhau"]) : NULL;
-    $anh = isset($_POST["anh"]) ? addslashes($_POST["anh"]) : NULL;
-    $capdo = isset($_POST["capdo"]) ? addslashes($_POST["capdo"]) : NULL;
+    echo $hoten = isset($_POST["hoten"]) ? addslashes($_POST["hoten"]) : NULL;
+    echo $sdt = isset($_POST["sdt"]) ? addslashes($_POST["sdt"]) : NULL;
+    echo $diachi = isset($_POST["diachi"]) ? addslashes($_POST["diachi"]) : NULL;
+    echo $email = isset($_POST["email"]) ? addslashes($_POST["email"]) : NULL;
+    echo $matkhau = isset($_POST["matkhau"]) ? addslashes($_POST["matkhau"]) : NULL;
+    echo $anh = isset($_POST["anh"]) ? addslashes($_POST["anh"]) : NULL;
+    echo $capdo = isset($_POST["capdo"]) ? addslashes($_POST["capdo"]) : NULL;
 
-    if ($hoten && $sdt && $diachi && $email && $matkhau && $anh && !empty($capdo)) {
+    if ($hoten && $sdt && $diachi && $email && $matkhau && $anh) {
 
         // kiểm tra tên này đã được dùng chưa?
-        $kiemtra = query("SELECT * FROM nhanvien WHERE email = '{$email}'");
+        $kiemtra = query("SELECT * FROM NHANVIEN WHERE email = '{$email}'");
 
         if ($kiemtra->num_rows === 0) {
 
             $hashmd5 = md5($matkhau);
 
-            insert("nhanvien", [
+            insert("NHANVIEN", [
                 "hoten" => $hoten,
                 "sodienthoai" => $sdt,
                 "anh" => $anh,

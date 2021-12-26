@@ -9,17 +9,16 @@ where email = '$email'";
 $sql_check_password = "select matkhau from KHACHHANG
 where email = '$email'";
 
-// die($sql_check_email);
-if(executeResult($sql_check_email)['count(*)'] == 0 ){
+if(select($sql_check_email)[0]['count(*)'] == 0 ){
     header('location: ../signin.php?error_email=Email không tồn tại');
     exit;
-}else if(executeResult($sql_check_password)['matkhau'] != $password ){
+}else if(select($sql_check_password)[0]['matkhau'] != $password ){
     header('location: ../signin.php?error_password=Mật khẩu không chính xác');
     exit;
 }else{
     $sql = "select id, hoten, anh, token from KHACHHANG
     where email = '$email' and matkhau = '$password'";
-    $user = executeResult($sql);
+    $user = select($sql)[0];
     $_SESSION['id'] = $user['id'];
     $_SESSION['name'] = $user['hoten'];
     $_SESSION['avatar'] = $user['anh'];

@@ -115,36 +115,3 @@ function query(string $query)
     global $mysqli;
     return $mysqli->query($query);
 }
-
-// Thuc thi SQL
-function execute($sql){
-    #This is function to insert, update, delete
-    $connect = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE);
-    mysqli_query($connect,$sql);
-
-
-    #close connection
-    mysqli_close($connect);
-}
-
-// Tra ve gia tri dau tien cua SQL
-function executeResult($sql){
-    #This is function to insert, update, delete
-    $connect = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE);
-    $result = mysqli_query($connect,$sql);
-    $row = mysqli_fetch_array($result);
-    #close connection
-    mysqli_close($connect);
-
-    return $row;
-}
-// Tra ve tat ca gia tri cua SQL
-function executeResultAll($sql){
-    #This is function to insert, update, delete
-    $connect = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE);
-    $result = mysqli_query($connect,$sql);
-    #close connection
-    mysqli_close($connect);
-
-    return $result;
-}

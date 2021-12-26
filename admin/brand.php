@@ -7,7 +7,7 @@ if($sid === NULL){
     die();
 }
 
-$dulieu = select("SELECT * FROM nhasanxuat");
+$dulieu = select("SELECT * FROM NHASANXUAT");
 ?>
 
 <!DOCTYPE html>

@@ -13,20 +13,27 @@ $phone_number = addslashes($_POST['phone_number']);
 $password = addslashes($_POST['password']);
 $avatar = DOMAIN.'user/signing/assets/image/avatar_default.png';
 $token = createAccessToken($email,$password);
-$sql = "insert into KHACHHANG (hoten,sodienthoai,diachi,email,matkhau,anh,token)
-values('$name' , '$phone_number' , '' , '$email' , '$password' , '$avatar', '$token')";
 
-$sql_check = "select count(*) from KHACHHANG
+$data = [
+    "hoten" => $name,
+    "sodienthoai" => $phone_number,
+    "diachi" => "",
+    "email" => $email,
+    "matkhau" => $password,
+    "anh" => $avatar,
+    "token" => $token
+];
+$sql = "select count(*) from KHACHHANG
 where email = '$email'";
-if(executeResult($sql_check)['count(*)'] > 0 ){
+if(select($sql)[0]['count(*)'] > 0 ){
     $_SESSION['error_account'] = 'Email đã tồn tại';
     header('location: ../signup.php');
     exit;
 }else{
-    execute($sql);
+    insert("KHACHHANG",$data);
     $sql = "select id from KHACHHANG
     where email = '$email'";
-    $_SESSION["id"] = executeResult($sql)["id"];
+    $_SESSION["id"] = select($sql)[0]["id"];
     $_SESSION["name"] = $name;
     $_SESSION["avatar"] = $avatar; 
     header("location: ../../index.php");

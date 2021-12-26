@@ -6,7 +6,7 @@ $error_message = "";
 
 // kiểm tra thông tin id xem tồn tại không
 $id = isset($_GET["id"]) ? $_GET["id"] : NULL;
-$kiemtra = query("SELECT * FROM sanpham WHERE id = '{$id}'");
+$kiemtra = query("SELECT * FROM SANPHAM WHERE id = '{$id}'");
 $dulieu = $kiemtra->fetch_assoc();
 
 if ($kiemtra->num_rows === 0) {
@@ -14,8 +14,8 @@ if ($kiemtra->num_rows === 0) {
     exit();
 }
 
-$dulieu_nsx = select("SELECT * FROM nhasanxuat");
-$dulieu_tl = select("SELECT * FROM theloai");
+$dulieu_nsx = select("SELECT * FROM NHASANXUAT");
+$dulieu_tl = select("SELECT * FROM THELOAI");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -29,18 +29,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($ten && $tl && $nsx && $mota && $gia && $anh) {
 
         // kiểm tra tên này đã được dùng chưa?
-        $kiemtra = query("SELECT * FROM sanpham WHERE ten = '{$ten}' and id_nhasanxuat = '{$nsx}' and id_theloai = '{$tl}' and id != '{$id}'");
+        $kiemtra = query("SELECT * FROM SANPHAM WHERE ten = '{$ten}' and id_NHASANXUAT = '{$nsx}' and id_THELOAI = '{$tl}' and id != '{$id}'");
 
         if ($kiemtra->num_rows === 0) {
             update(
-                "sanpham",
+                "SANPHAM",
                 [
                     "ten" => $ten,
                     "mota" => $mota,
                     "anh" => $anh,
                     "gia" => $gia,
-                    "id_nhasanxuat" => $nsx,
-                    "id_theloai" => $tl
+                    "id_NHASANXUAT" => $nsx,
+                    "id_THELOAI" => $tl
                 ],
                 "id='{$id}'"
             );
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             Danh mục:<br>
             <select name="tl">
                 <?php foreach ($dulieu_tl as $item) { ?>
-                    <option <?php if ($dulieu["id_theloai"] === $item["id"]) {
+                    <option <?php if ($dulieu["id_THELOAI"] === $item["id"]) {
                                 echo "selected";
                             } ?> value="<?= $item["id"] ?>"><?= $item["ten"] ?></option>
                 <?php } ?>
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             Nhà sản xuất:<br>
             <select name="nsx">
                 <?php foreach ($dulieu_nsx as $item) { ?>
-                    <option <?php if ($dulieu["id_nhasanxuat"] === $item["id"]) {
+                    <option <?php if ($dulieu["id_NHASANXUAT"] === $item["id"]) {
                                 echo "selected";
                             } ?> value="<?= $item["id"] ?>"><?= $item["ten"] ?></option>
                 <?php } ?>

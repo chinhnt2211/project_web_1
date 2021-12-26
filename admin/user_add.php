@@ -17,13 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($hoten && $sdt && $diachi && $email && $matkhau && $anh) {
 
         // kiểm tra tên này đã được dùng chưa?
-        $kiemtra = query("SELECT * FROM khachhang WHERE email = '{$email}'");
+        $kiemtra = query("SELECT * FROM KHACHHANG WHERE email = '{$email}'");
 
         if ($kiemtra->num_rows === 0) {
 
             $hashmd5 = md5($matkhau);
 
-            insert("khachhang", [
+            insert("KHACHHANG", [
                 "hoten" => $hoten,
                 "sodienthoai" => $sdt,
                 "anh" => $anh,
