@@ -4,10 +4,10 @@ require_once(__DIR__ . "/../core/core.php");
 if ($sid === NULL) {
     // Test nen sua cho nay
     header("Location: ./login.php");
-    exit();
+    die();
 }
 
-$dulieu = select("SELECT * FROM theloai");
+$dulieu = select("SELECT sp.*, nsx.ten as nsx_ten, tl.ten as tl_ten FROM sanpham sp INNER JOIN nhasanxuat nsx ON sp.id_nhasanxuat = nsx.id INNER JOIN theloai tl ON tl.id = sp.id_theloai");
 ?>
 
 <!DOCTYPE html>
@@ -26,16 +26,16 @@ $dulieu = select("SELECT * FROM theloai");
         Bảng điều khiển
     </h1>
     <ul>
-        <li class="active"><a href="./">Danh mục</a></li>
+        <li><a href="./">Danh mục</a></li>
         <li><a href="./brand.php">Nhà sản xuất</a></li>
-        <li><a href="./product.php">Sản phẩm</a></li>
+        <li class="active"><a href="./product.php">Sản phẩm</a></li>
         <li><a href="./user.php">Người dùng</a></li>
         <li><a href="./staff.php">Nhân sự</a></li>
         <li><a href="./cart.php">Giỏ hàng</a></li>
     </ul>
     <div class="toolbar">
         <div>
-            <a href="./category_add.php">Sửa danh mục</a>
+            <a href="./product_add.php">Thêm sản phẩm</a>
         </div>
         <div>
             <form action=""><input type="search" name="search"><input type="submit" value="Tìm kiếm"></form>
@@ -48,7 +48,12 @@ $dulieu = select("SELECT * FROM theloai");
             <thead>
                 <tr>
                     <td>ID</td>
-                    <td>Tên danh mục</td>
+                    <td>Tên sản phẩm</td>
+                    <td>Mô tả</td>
+                    <td>Ảnh</td>
+                    <td>Giá</td>
+                    <td>Nhà sản xuất</td>
+                    <td>Danh mục</td>
                     <td>Thao tác</td>
                 </tr>
             </thead>
@@ -57,7 +62,12 @@ $dulieu = select("SELECT * FROM theloai");
                     <tr>
                         <td><?= $item["id"] ?></td>
                         <td><?= $item["ten"] ?></td>
-                        <td> <a href="./category_edit.php?id=<?= $item["id"] ?>">Sửa</a> | <a href="./category_delete.php?id=<?= $item["id"] ?>">Xoá</a></td>
+                        <td><?= $item["mota"] ?></td>
+                        <td><img src="<?= $item["anh"] ?>" /></td>
+                        <td><?= $item["gia"] ?></td>
+                        <td><?= $item["nsx_ten"] ?></td>
+                        <td><?= $item["tl_ten"] ?></td>
+                        <td> <a href="./product_edit.php?id=<?= $item["id"] ?>">Sửa</a> | <a href="./product_delete.php?id=<?= $item["id"] ?>">Xoá</a></td>
                     </tr>
                 <?php } ?>
             </tbody>
