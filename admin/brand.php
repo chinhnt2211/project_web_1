@@ -1,13 +1,13 @@
 <?php
-require_once(__DIR__ . "/../core/core.php");
+require_once(__DIR__."/../core/core.php");
 
-if ($sid === NULL) {
+if($sid === NULL){
     // Test nen sua cho nay
     header("Location: ./login.php");
-    exit();
+    die();
 }
 
-$dulieu = select("SELECT * FROM theloai");
+$dulieu = select("SELECT * FROM nhasanxuat");
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +26,8 @@ $dulieu = select("SELECT * FROM theloai");
         Bảng điều khiển
     </h1>
     <ul>
-        <li class="active"><a href="./">Danh mục</a></li>
-        <li><a href="./brand.php">Nhà sản xuất</a></li>
+        <li><a href="./">Danh mục</a></li>
+        <li class="active"><a href="./brand.php">Nhà sản xuất</a></li>
         <li><a href="./product.php">Sản phẩm</a></li>
         <li><a href="./user.php">Người dùng</a></li>
         <li><a href="./staff.php">Nhân sự</a></li>
@@ -35,7 +35,7 @@ $dulieu = select("SELECT * FROM theloai");
     </ul>
     <div class="toolbar">
         <div>
-            <a href="./category_add.php">Sửa danh mục</a>
+            <a href="./brand_add.php">Thêm nhà sản xuất</a>
         </div>
         <div>
             <form action=""><input type="search" name="search"><input type="submit" value="Tìm kiếm"></form>
@@ -53,12 +53,12 @@ $dulieu = select("SELECT * FROM theloai");
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($dulieu as $item) { ?>
-                    <tr>
-                        <td><?= $item["id"] ?></td>
-                        <td><?= $item["ten"] ?></td>
-                        <td> <a href="./category_edit.php?id=<?= $item["id"] ?>">Sửa</a> | <a href="./category_delete.php?id=<?= $item["id"] ?>">Xoá</a></td>
-                    </tr>
+                <?php foreach($dulieu as $item){ ?>
+                <tr>
+                    <td><?=$item["id"]?></td>
+                    <td><?=$item["ten"]?></td>
+                        <td> <a href="./brand_edit.php?id=<?= $item["id"] ?>">Sửa</a> | <a href="./brand_delete.php?id=<?= $item["id"] ?>">Xoá</a></td>
+                </tr>
                 <?php } ?>
             </tbody>
         </table>
