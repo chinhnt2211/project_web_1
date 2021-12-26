@@ -4,7 +4,7 @@
 
 ## BÁN HÀNG ĐIỆN TỬ
 *Chú ý*
->Mọi tài liệu thông tin đều được lưu vào thư mục [Document]("./Document")
+>Mọi tài liệu thông tin đều được lưu vào thư mục [Document](/Document)
 ### 1. Đối tương sử dụng:
 ***Khác hàng không tài khoản***
 

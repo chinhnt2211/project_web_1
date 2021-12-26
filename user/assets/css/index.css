@@ -1,19 +1,16 @@
 
 .container-content{
-    height: 1000px;
     width: 1300px;
 }
 
-li{
-    display: block;
-    float: left;
-}
+
 .list-items{
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     border: 1px solid black;
     list-style: none;
     padding: 0px;
-    width: 1002px;
+    width: 802px;
     margin: 10px;
 }
 .items{
@@ -33,4 +30,8 @@ li{
 }
 .items .name-item{
     margin: 10px;
+}
+
+.page-number{
+    
 }

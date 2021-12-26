@@ -1,30 +1,7 @@
 <!-- Header -->
-<?php require_once("../includes/header.php") ?>
+<?php require_once "../includes/header.php" ?>
 <!-- Process-Content -->
-<?php
-// Kiem tra thong tin thay doi
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = addslashes($_POST['name']);
-    $phone_number = addslashes($_POST['phone_number']);
-    $address = addslashes($_POST['address']);
-    if (isset($_POST['avatar'])) {
-        $avatar = $_POST['avatar'];
-    } else {
-        $avatar = $_SESSION['avatar'];
-    }
-    $id = $_SESSION['id'];
-    $sql = "update KHACHHANG 
-    set 
-        hoten = '$name' , sodienthoai = '$phone_number' , diachi = '$address' , anh = '$avatar'
-    where 
-        id = '$id'";
-    execute($sql);
-    $_SESSION['name'] = $name;
-    $_SESSION['avatar'] = $avatar;
-    header("location: ../index.php");
-}
-?>
-
+<?php require_once "./process_profile.php" ?>
 <!-- Content -->
 <style>
     @import url("./assets/css/index.css");
@@ -35,29 +12,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <li><a href="./order.php">Đơn mua</a></li>
         <li><a href="./notice.php">Thông báo</a></li>
     </ul>
-    <form action="index.php" method="POST" enctype="multipart/form-data">
+    <br>
+    <p>
+    <?php if(isset($_SESSION["error"])){
+        echo $_SESSION["error"];
+        unset($_SESSION["error"]);
+    }?>
+    </p>
+    <form action="./index.php" method="POST" enctype="multipart/form-data">
         <div class="form_update">
             <p>
                 <label class="">Họ và tên
-                    <input type="text" name="name">
+                    <input type="text" name="name" value="<?= $name ?>">
                 </label>
             </p>
             <p>
                 <label>Số điện thoại
-                    <input type="number" name="phone_number">
+                    <input type="number" name="phone_number" value="<?= $phone_number ?>">
                 </label>
             </p>
             <p>
                 <label>Địa chỉ
-                    <input type="text" name="address">
+                    <input type="text" name="address" value="<?= $address ?>">
                 </label>
             </p>
             <p>
                 <label>Ảnh
-                    <input type="file" name="avatar">
+                    <input type="file" name="avatar" accept=".jpg, .png, .jpeg, .gif" ">
                 </label>
             </p>
-            <button class="save-info" type="submit" onclick="return checkForm()">Lưu</button>
+            <button class=" save-info" type="submit" onclick="return checkForm()">Lưu</button>
         </div>
     </form>
 </div>
