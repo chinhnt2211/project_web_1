@@ -1,33 +1,31 @@
 <?php
-require_once(__DIR__."/../core/core.php");
+require_once(__DIR__ . "/../core/core.php");
 
 // hiển thị lỗi, nếu có lỗi
 $error_message = "";
 
 // kiểm tra thông tin form nhập đủ ko
-if($_SERVER["REQUEST_METHOD"] === "POST"){
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $ten = isset($_POST["ten"]) ? addslashes($_POST["ten"]) : NULL;
 
-    if($ten){
+    if ($ten) {
 
         // kiểm tra tên này đã được dùng chưa?
         $kiemtra = query("SELECT * FROM theloai WHERE ten = '{$ten}'");
 
-        if($kiemtra->num_rows === 0){
+        if ($kiemtra->num_rows === 0) {
             insert("theloai", [
                 "ten" => $ten
             ]);
 
             header("Location: /admin/");
-        }else{
+        } else {
             $error_message = "Tên này đã được tạo rồi, chọn tên khác đi";
         }
-
-    }else{
+    } else {
         $error_message = "Vui lòng nhập đủ thông tin";
     }
-
 }
 
 ?>
@@ -54,14 +52,19 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         <li><a href="./staff.php">Nhân sự</a></li>
         <li><a href="./cart.php">Giỏ hàng</a></li>
     </ul>
-    
+
     <h1>Thêm danh mục</h1>
     <div class="form">
         <form action="" method="POST">
+            <?php if ($error_message !== "") { ?>
+                <div style="border: 2px dashed orange;background: #fff5e2;color: #e99700;padding: 5px 10px;margin: 10px 0px;">
+                    <?= $error_message ?>
+                </div>
+            <?php } ?>
             Tên danh mục:<br>
             <input name="ten" type="text" />
             <br>
-            <input type="submit" value="Thêm danh mục"/>
+            <input type="submit" value="Thêm danh mục" />
         </form>
         <a href="./">Quay lại</a>
     </div>

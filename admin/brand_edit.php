@@ -1,33 +1,45 @@
 <?php
-require_once(__DIR__."/../core/core.php");
+require_once(__DIR__ . "/../core/core.php");
 
 // hiển thị lỗi, nếu có lỗi
 $error_message = "";
 
-// kiểm tra thông tin form nhập đủ ko
-if($_SERVER["REQUEST_METHOD"] === "POST"){
+// kiểm tra thông tin id xem tồn tại không
+$id = isset($_GET["id"]) ? $_GET["id"] : NULL;
+$kiemtra = query("SELECT * FROM nhasanxuat WHERE id = '{$id}'");
+$dulieu = $kiemtra->fetch_assoc();
+
+if ($kiemtra->num_rows === 0) {
+    header("Location: ./brand.php");
+    exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $ten = isset($_POST["ten"]) ? addslashes($_POST["ten"]) : NULL;
 
-    if($ten){
+    if ($ten) {
 
         // kiểm tra tên này đã được dùng chưa?
-        $kiemtra = query("SELECT * FROM nhasanxuat WHERE ten = '{$ten}'");
+        $kiemtra = query("SELECT * FROM nhasanxuat WHERE ten = '{$ten}' and id != '{$id}'");
 
-        if($kiemtra->num_rows === 0){
-            insert("nhasanxuat", [
-                "ten" => $ten
-            ]);
+        if ($kiemtra->num_rows === 0) {
+            update(
+                "nhasanxuat",
+                [
+                    "ten" => $ten
+                ],
+                "id='{$id}'"
+            );
 
             header("Location: ./brand.php");
-        }else{
+            exit();
+        } else {
             $error_message = "Tên này đã được tạo rồi, chọn tên khác đi";
         }
-
-    }else{
+    } else {
         $error_message = "Vui lòng nhập đủ thông tin";
     }
-
 }
 
 ?>
@@ -54,8 +66,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         <li><a href="./staff.php">Nhân sự</a></li>
         <li><a href="./cart.php">Giỏ hàng</a></li>
     </ul>
-    
-    <h1>Thêm nhà sản xuất</h1>
+
+    <h1>Sửa nhầ sản xuất</h1>
     <div class="form">
         <form action="" method="POST">
             <?php if ($error_message !== "") { ?>
@@ -63,10 +75,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                     <?= $error_message ?>
                 </div>
             <?php } ?>
-            Tên sản phẩm:<br>
-            <input name="ten" type="text" />
+            Tên nhà sản xuất:<br>
+            <input name="ten" type="text" value="<?= $dulieu["ten"]; ?>" />
             <br>
-            <input type="submit" value="Thêm sản phẩm"/>
+            <input type="submit" value="Sửa nhầ sản xuất" />
         </form>
         <a href="./brand.php">Quay lại</a>
     </div>

@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__."/../core/core.php");
 
-if($id === NULL){
+if($sid === NULL){
     // Test nen sua cho nay
     header("Location: ./login.php");
     die();
@@ -57,7 +57,7 @@ $dulieu = select("SELECT * FROM nhasanxuat");
                 <tr>
                     <td><?=$item["id"]?></td>
                     <td><?=$item["ten"]?></td>
-                    <td>Sửa | Xoá</td>
+                        <td> <a href="./brand_edit.php?id=<?= $item["id"] ?>">Sửa</a> | <a href="./brand_delete.php?id=<?= $item["id"] ?>">Xoá</a></td>
                 </tr>
                 <?php } ?>
             </tbody>
