@@ -7,7 +7,7 @@ if ($sid === NULL) {
     die();
 }
 
-$dulieu = select("SELECT sp.*, nsx.ten as nsx_ten, tl.ten as tl_ten FROM sanpham sp INNER JOIN nhasanxuat nsx ON sp.id_nhasanxuat = nsx.id INNER JOIN theloai tl ON tl.id = sp.id_theloai");
+$dulieu = select("SELECT sp.*, nsx.ten as nsx_ten, tl.ten as tl_ten FROM SANPHAM sp INNER JOIN NHASANXUAT nsx ON sp.id_nhasanxuat = nsx.id INNER JOIN THELOAI tl ON tl.id = sp.id_theloai");
 ?>
 
 <!DOCTYPE html>

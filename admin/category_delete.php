@@ -4,7 +4,7 @@ require_once(__DIR__ . "/../core/core.php");
 // kiểm tra thông tin id xem tồn tại không
 
 $id = isset($_GET["id"]) ? $_GET["id"] : NULL;
-$kiemtra = query("SELECT * FROM theloai WHERE id = '{$id}'");
+$kiemtra = query("SELECT * FROM THELOAI WHERE id = '{$id}'");
 
 if ($kiemtra->num_rows === 0) {
     header("Location: ./");
@@ -12,7 +12,7 @@ if ($kiemtra->num_rows === 0) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    delete("theloai", "id='{$id}'");
+    delete("THELOAI", "id='{$id}'");
     header("Location: ./");
     exit();
 }

@@ -6,7 +6,7 @@ $error_message = "";
 
 // kiểm tra thông tin id xem tồn tại không
 $id = isset($_GET["id"]) ? $_GET["id"] : NULL;
-$kiemtra = query("SELECT * FROM khachhang WHERE id = '{$id}'");
+$kiemtra = query("SELECT * FROM KHACHHANG WHERE id = '{$id}'");
 $dulieu = $kiemtra->fetch_assoc();
 
 if ($kiemtra->num_rows === 0) {
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($hoten && $sdt && $diachi && $email && $matkhau && $anh) {
 
         // kiểm tra tên này đã được dùng chưa?
-        $kiemtra = query("SELECT * FROM khachhang WHERE email = '{$email}' and id != '{$id}'");
+        $kiemtra = query("SELECT * FROM KHACHHANG WHERE email = '{$email}' and id != '{$id}'");
 
         if ($kiemtra->num_rows === 0) {
 
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($matkhau != NULL)
                 $data["matkhau"] = $hashmd5;
 
-            update("khachhang", $data, "id = '{$id}'");
+            update("KHACHHANG", $data, "id = '{$id}'");
 
             header("Location: ./user.php");
             exit();

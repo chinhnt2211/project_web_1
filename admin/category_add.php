@@ -12,10 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($ten) {
 
         // kiểm tra tên này đã được dùng chưa?
-        $kiemtra = query("SELECT * FROM theloai WHERE ten = '{$ten}'");
+        $kiemtra = query("SELECT * FROM THELOAI WHERE ten = '{$ten}'");
 
         if ($kiemtra->num_rows === 0) {
-            insert("theloai", [
+            insert("THELOAI", [
                 "ten" => $ten
             ]);
 

@@ -6,7 +6,7 @@ $error_message = "";
 
 // kiểm tra thông tin id xem tồn tại không
 $id = isset($_GET["id"]) ? $_GET["id"] : NULL;
-$kiemtra = query("SELECT * FROM theloai WHERE id = '{$id}'");
+$kiemtra = query("SELECT * FROM THELOAI WHERE id = '{$id}'");
 $dulieu = $kiemtra->fetch_assoc();
 
 if ($kiemtra->num_rows === 0) {
@@ -21,11 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($ten) {
 
         // kiểm tra tên này đã được dùng chưa?
-        $kiemtra = query("SELECT * FROM theloai WHERE ten = '{$ten}' and id != '{$id}'");
+        $kiemtra = query("SELECT * FROM THELOAI WHERE ten = '{$ten}' and id != '{$id}'");
 
         if ($kiemtra->num_rows === 0) {
             update(
-                "theloai",
+                "THELOAI",
                 [
                     "ten" => $ten
                 ],

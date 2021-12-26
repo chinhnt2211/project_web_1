@@ -4,8 +4,8 @@ require_once(__DIR__ . "/../core/core.php");
 // hiển thị lỗi, nếu có lỗi
 $error_message = "";
 
-$dulieu_nsx = select("SELECT * FROM nhasanxuat");
-$dulieu_tl = select("SELECT * FROM theloai");
+$dulieu_nsx = select("SELECT * FROM NHASANXUAT");
+$dulieu_tl = select("SELECT * FROM THELOAI");
 
 // kiểm tra thông tin form nhập đủ ko
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($ten && $tl && $nsx && $mota && $gia && $anh) {
 
         // kiểm tra tên này đã được dùng chưa?
-        $kiemtra = query("SELECT * FROM sanpham WHERE ten = '{$ten}' and id_nhasanxuat = '{$nsx}' and id_theloai = '{$tl}'");
+        $kiemtra = query("SELECT * FROM sanpham WHERE ten = '{$ten}' and id NHASANXUAT = '{$nsx}' and id_theloai = '{$tl}'");
 
         if ($kiemtra->num_rows === 0) {
             insert("sanpham", [
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 "mota" => $mota,
                 "anh" => $anh,
                 "gia" => $gia,
-                "id_nhasanxuat" => $nsx,
+                "id NHASANXUAT" => $nsx,
                 "id_theloai" => $tl
             ]);
 
