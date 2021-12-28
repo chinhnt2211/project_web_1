@@ -58,6 +58,7 @@
                                 </p>
                                 <p class="content-item">
                                     <label class="input-password">Mật khẩu
+                                        <div class="notice-password"> (*)Mật khẩu từ 6-20 ký tự chứa ít nhất 1 chữ <br> số, chứ hoa và chữ thường </div>
                                         <input type="password" placeholder="*****" name="password" autocomplete="off" required>
                                         <span class="show-password"><i class="far fa-eye"></i></span>
                                         <p class="error_password"></p>
