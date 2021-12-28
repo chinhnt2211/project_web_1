@@ -64,7 +64,7 @@ function checkForm() {
     } else {
         let regex_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/gm;
         if (!(regex_password.test(password))) {
-            error_password.innerHTML = "*Mật khẩu từ 6-20 ký tự chứa ít nhất 1 chữ <br> số, chứ hoa và chữ thường";
+            error_password.innerHTML = "*Mật khẩu không hợp lệ";
             result = false;
         }else{
             error_password.innerHTML = "";

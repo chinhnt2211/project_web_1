@@ -184,6 +184,13 @@ input::placeholder {
     color: red;
     height: 21px;
 }
+.notice-password{
+    padding-bottom: 30px;
+    font-size: 0.8em;
+    color:#575757;
+    height: 21px;
+
+}
 
 /* Show password */
 .input-password{
