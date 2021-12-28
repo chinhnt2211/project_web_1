@@ -9,7 +9,7 @@ CREATE TABLE NHANVIEN (
     email varchar(100) not null,
     matkhau varchar(32) not null,
     anh varchar(100),
-    capdo int not null
+    capdo int(1) not null
 );
 
 ALTER TABLE nhanvien
