@@ -12,6 +12,9 @@ CREATE TABLE NHANVIEN (
     capdo int not null
 );
 
+ALTER TABLE nhanvien
+ADD CONSTRAINT UC_NHANVIEN_email UNIQUE (email)
+
 CREATE TABLE KHACHHANG(
     id int NOT NULL primary key auto_increment,
     hoten varchar(100) not null,
