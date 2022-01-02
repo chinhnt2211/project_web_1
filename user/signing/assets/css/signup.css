@@ -11,6 +11,12 @@ body{
     background-position-x: center;
     background-image: url("../image/background_signing.jpg");
 }
+.active-error{
+    display: block!important;
+}
+
+
+/* Content */
 .content-wrapper{
     backdrop-filter: blur(4px);
 }
@@ -183,12 +189,13 @@ input::placeholder {
     font-size: 0.8em;
     color: red;
     height: 21px;
+    display: none;
 }
 .notice-password{
-    padding-bottom: 30px;
+    padding-top: 5px;
     font-size: 0.8em;
     color:#575757;
-    height: 21px;
+    height: 32px;
 
 }
 

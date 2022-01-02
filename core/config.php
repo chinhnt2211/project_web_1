@@ -5,4 +5,4 @@ define("DOMAIN" , 'http://localhost/PHP_WEB/project_web_1/');
 define('HOST', '127.0.0.1');
 define('USERNAME', 'root');
 define('PASSWORD', '22112002');
-define('DATABASE', 'project_web_1');
+define('DATABASE', '22');
