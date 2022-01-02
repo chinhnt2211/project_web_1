@@ -14,7 +14,7 @@ if (isset($_GET["page"])) {
     $page = 1;
 }
 $numberProducts = select("SELECT count(*) FROM SANPHAM WHERE ten LIKE '%$find%'")[0]["count(*)"];
-$numberProductsInPage = 12; //Số sản phẩm trên 1 trang là 15
+$numberProductsInPage = 8; //Số sản phẩm trên 1 trang là 8
 $numberPages = ceil($numberProducts / $numberProductsInPage);
 $offset = $numberProductsInPage * ($page - 1);
 $sql = "SELECT * FROM SANPHAM

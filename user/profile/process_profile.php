@@ -11,7 +11,7 @@ function procesImage()
     }
 
     $imageFileType = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
-    $target_dir    = "assets/images/avatar/";
+    $target_dir    = "uploads/images/avatar/";
     $target_file   = $target_dir . basename($_SESSION["id"] . "." . $imageFileType);
     $allowUpload   = true;
     $maxfilesize   = 9000000;
