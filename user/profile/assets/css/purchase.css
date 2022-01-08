@@ -1,0 +1,18 @@
+
+.item{
+    display: flex;
+    border: 1px solid #ccc;
+    
+    padding: 10px;
+    color: black;
+    cursor: pointer;
+}
+
+
+.image-product{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
