@@ -41,7 +41,7 @@ define('DATABASE', 'project_web_1');
 
 >+ Đăng nhập, đăng xuất
 >+ Thêm sản phẩm
->+ Thay đổi tình trạng đơn (Đang chờ - Đã duyệt – Đang giao – Đã giao ) 
+>+ Thay đổi tình trạng đơn (Đang chờ - Đã duyệt/Bị hủy – Đang giao – Đã giao ) 
 
 ***Quản lý***
 
