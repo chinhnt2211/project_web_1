@@ -71,7 +71,7 @@
                                         <p class="error_password_again"></p>
                                     </label>
                                 </p>
-                                <button type="submit" class="signup" onclick="return checkForm()">Đăng kí</button>
+                                <button type="button" class="signup btn-signup">Đăng kí</button>
                                 <a href="./signin.php" class="login">Đăng nhập</a>
                             </form>
                         </div>
@@ -83,7 +83,6 @@
         </div>
     </div>
     </body>
-
     <script src="./assets/js/signup.js"></script>
 
 </html>
