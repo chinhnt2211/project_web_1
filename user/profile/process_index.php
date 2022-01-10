@@ -82,6 +82,8 @@ if ($result["gioitinh"] == NULL) {
 }
 // Kiem tra thong tin thay doi
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    unset($_SESSION["error"]);
+
     $name = addslashes($_POST['name']);
     $phone_number = addslashes($_POST['phone_number']);
     $address = addslashes($_POST['address']);
@@ -92,12 +94,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $day = $_POST['day'];
     $birthday = strtotime("$year"."/"."$month"."/"."$day");
     // Kiem tra co avatar khong
-    if (!isset($_FILES["avatar"])) {
+    if (isset($_FILES["avatar"])) {
         $checkAvatar = procesImage();
+        if ($checkAvatar) {
+            $avatar = addslashes($checkAvatar);
+        }
     }
-    if ($checkAvatar) {
-        $avatar = addslashes($checkAvatar);
-    }
+    
 
     $id = $_SESSION['id'];
     update("KHACHHANG", [

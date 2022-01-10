@@ -35,7 +35,7 @@ CREATE TABLE HOADON(
     diachinhan varchar(200) not null,
     hotennhan varchar(100) not null,
     sodienthoainhan varchar(15) not null,
-    thoigiandat varchar(50) not null,
+    thoigiandat date not null,
     tongtien bigint not null,
     trangthaidon int(1) not null,
     constraint fk_hoadon_kh foreign key (id_khachhang) references KHACHHANG(id),
@@ -53,16 +53,40 @@ CREATE TABLE NHASANXUAT(
     ten varchar(100) not null
 );
 
+CREATE TABLE NHOMCAUHINH(
+    id int not null primary key auto_increment,
+    ten varchar(100) not null
+);
+
+CREATE TABLE CAUHINH(
+    id int not null primary key auto_increment,
+    ten varchar(100) not null,
+    id_nhomcauhinh int DEFAULT NULL,
+    constraint fk_cauhinh_nch foreign key (id_nhomcauhinh) references NHOMCAUHINH(id)
+);
+
 CREATE TABLE SANPHAM(
     id int not null primary key auto_increment,
     ten varchar(100) not null,
     mota text not null,
     anh varchar(200),
     gia int(15),
+    soluong int NOT NULL DEFAULT 0,
+    daban int NOT NULL DEFAULT 0,
+    xuatxu varchar(100),
+    ngayramat date DEFAULT NULL,
     id_nhasanxuat int not null,
     id_theloai int not null,
     constraint fk_sanpham_nsx foreign key (id_nhasanxuat) references NHASANXUAT(id),
     constraint fk_sanpham_tl foreign key (id_theloai) references THELOAI(id)
+);
+CREATE TABLE CAUHINHCHITIET(
+    id_sanpham int not null,
+    id_cauhinh int not null,
+    giatri int,
+    primary key (id_sanpham, id_cauhinh),
+    constraint fk_cauhinhchitiet_sp foreign key (id_sanpham) references SANPHAM(id),
+    constraint fk_cauhinhchitiet_ch foreign key (id_cauhinh) references CAUHINH(id)
 );
 
 CREATE TABLE HOADONCHITIET(
@@ -75,13 +99,14 @@ CREATE TABLE HOADONCHITIET(
 );
 
 CREATE TABLE DANHGIA(
+    id int not null primary key auto_increment,
     id_khachhang int not null,
     id_hoadon int not null,
     id_sanpham int not null,
     hoten varchar(100) default 'Ẩn Danh',
-    nhanxet varchar(250) not null,
-    chatluong int(1) not null,
-    thoigian varchar(15) not null,
+    nhanxet varchar(250) default null,
+    chatluong int(1) default null,
+    thoigian date default null,
     constraint fk_danhgia_kh foreign key (id_khachhang) references KHACHHANG(id),
     constraint fk_danhgia_hd foreign key (id_hoadon) references HOADON(id),
     constraint fk_danhgia_sp foreign key (id_sanpham) references SANPHAM(id)
@@ -120,15 +145,40 @@ INSERT INTO `NHASANXUAT` (`id`, `ten`) VALUES
 (13, 'Acer');
 
 --
+-- Đang đổ dữ liệu cho bảng `CAUHINH`
+--
+
+INSERT INTO `CAUHINH` (`id`, `ten`) VALUES
+(1, 'Kích thước màn hình'),
+(2, 'Loại màn hình'),
+(3, 'Độ phân giải'),
+(4, 'Tần số quét'),
+(5, 'Độ sáng'),
+(6, 'Tấm nền'),
+(7, 'Công nghệ màn hình'),
+(8, 'Độ phủ màu'),
+(10, 'Dung lượng RAM'),
+(11, 'Loại RAM'),
+(12, 'Tốc độ RAM'),
+(13, 'Số khe cắm rời'),
+(14, 'Số khe RAM còn lại'),
+(15, 'Số RAM onboard'),
+(16, 'Hỗ trợ RAM tối đa');
+
+--
 -- Đang đổ dữ liệu cho bảng `THELOAI`
 --
 
 INSERT INTO `THELOAI` (`id`, `ten`) VALUES
-(1, 'PC - Linh Kiện'),
+(1, 'PC'),
+(2, 'Tablet'),
 (3, 'Điện Thoại'),
+(4, 'Linh kiện máy tính'),
 (5, 'Laptop'),
-(6, 'Phụ kiện');
-
+(6, 'Phụ kiện'),
+(7, 'Đồ gia dụng'),
+(8, 'Thiết bị chơi game'),
+(9, 'Thiết bị văn phòng');
 
 --
 -- Đang đổ dữ liệu cho bảng `SANPHAM`
@@ -162,6 +212,27 @@ INSERT INTO `SANPHAM` (`id`, `ten`, `mota`, `anh`, `gia`, `id_nhasanxuat`, `id_t
 (24, 'Xiaomi Redmi Note 10S 8GB-128GB', 'Đánh giá chi tiết Xiaomi Redmi Note 10S 8GB-128GB\r\nCùng Xiaomi Redmi Note 10S nắm giữ mọi khoảnh khắc với bộ tứ camera 64MP chuyên nghiệp, trải nghiệm màn hình AMOLED tuyệt đẹp và hiệu năng vốn đã thành thương hiệu của dòng Redmi. Hãy bắt đầu cuộc phiêu lưu của bạn theo cách hứng khởi nhất.\r\n\r\nXiaomi Redmi Note 10S\r\n\r\nNắm giữ khoảnh khắc, lưu lại kỷ niệm\r\nBộ tứ camera trên Redmi Note 10S luôn sẵn sàng cùng bạn ghi lại những khoảnh khắc đáng nhớ nhất. Thật dễ dàng để chụp ảnh đẹp trong mọi hoàn cảnh với sự đa năng của 4 camera. Nổi bật nhất tất nhiên là camera chính 64MP, chụp ảnh sắc nét tới từng chi tiết; tiếp đến là camera góc siêu rộng 8MP, camera đo độ sâu 2MP và camera macro 2MP. Bạn sẽ không bỏ qua bất cứ điều gì thú vị trong cuộc sống khi đồng hành cùng Xiaomi Redmi Note 10S.\r\n\r\ncamera Xiaomi Redmi Note 10S\r\n\r\nChụp đêm ảo diệu\r\nDưới bóng đêm mờ ảo, những ánh đèn lung linh và nhiều cảnh đẹp khác sẽ hiện ra. Redmi Note 10S có thể bắt trọn vẻ đẹp ấy với khả năng chụp đêm xuất sắc. Cảm biến độ phân giải cao 64MP, khẩu độ lớn f/1.79 và hỗ trợ chụp đêm camera AI thông minh giúp ánh sáng được đẩy lên ở mức tự nhiên, màu sắc chính xác, giảm thiểu độ nhiễu đồng thời không giảm chi tiết của ảnh chụp. Bạn hoàn toàn có thể tự tin tỏa sáng trong màn đêm với chiếc Xiaomi này.\r\n\r\nchụp đêm Xiaomi Redmi Note 10S\r\n\r\nThế giới giải trí tuyệt mỹ trên màn hình AMOLED sống động\r\nTận hưởng những giây phút giải trí tuyệt vời trên chiếc điện thoại màn hình lớn 6.43 inch AMOLED, nơi các nội dung hiển thị với màu sắc ấn tượng nhất. Dải màu rộng DCI-P3 cho màu sắc chính xác và chân thực, độ tương phản cao lên tới 4.500.000:1 mang đến những hình ảnh đẹp mãn nhãn. Màn hình này cũng được chế tác viền mỏng với camera trước nằm ở vị trí gọn gàng, tạo tính thẩm mỹ cao, đồng thời nâng tầm trải nghiệm xem.\r\n\r\nmàn hình Xiaomi Redmi Note 10S\r\n\r\nBảo vệ đôi mắt của bạn\r\nXiaomi Redmi Note 10S tích hợp rất nhiều tính năng để bảo vệ mắt của bạn trong suốt quá trình sử dụng điện thoại. Cảm biến ánh sáng 360 độ cực nhạy, giúp điện thoại nhanh chóng thay đổi độ sáng màn hình theo môi trường; chế độ đọc 3.0 mô phỏng các máy đọc sách hàng đầu, dành cho những người thích đọc sách trên điện thoại; bộ lọc ánh sáng xanh thông minh giúp dịu mắt hơn khi sử dụng điện thoại lâu dài. Tất cả đều hướng tới đôi mắt khỏe mạnh cho người dùng.\r\n\r\nbảo vệ mắt Xiaomi Redmi Note 10S\r\n\r\nLoa ngoài Hi-Res Audio chất lượng cao\r\nĐể mang đến những âm thanh lớn hơn và dải âm rộng hơn, Xiaomi Redmi Note 10S sử dụng hệ thống loa kép chất lượng cao Hi-Res Audio. Bạn sẽ được trực tiếp tận hưởng âm thanh lớn và sống động khi chơi game, xem phim mà không cần phải sử dụng tai nghe.\r\n\r\nloa ngoài Xiaomi Redmi Note 10S\r\n\r\nTăng cường hiệu suất\r\nTrang bị bộ vi xử lý Helio G95 với 8 nhân tốc độ cao 2.05GHz, Redmi Note 10S đủ sức mạnh để bạn trải nghiệm mọi ứng dụng. Hiệu suất chơi game cũng được tăng cường nhờ GPU thế hệ mới. Hơn nữa, Note 10S còn mang trên mình một động cơ rung tuyến tính đặc biệt, mang đến các phản hồi chân thực cho game thủ khi chơi game.\r\n\r\ncấu hình Xiaomi Redmi Note 10S\r\n\r\nTinh tế và cao cấp\r\nRedmi Note 10S là chiếc điện thoại sẽ khiến bạn yêu ngay từ cái nhìn đầu tiên nhờ những đường bo tròn tinh tế, cụm camera chế tác hiện đại và mặt lưng bóng bẩy sang trọng. Phần điện thoại có cảm biến vân tay được đặt ở cạnh bên tiện lợi, giúp người dùng thao tác mở khóa trong chớp mắt. Cảm giác cầm nắm thoải mái, nhẹ nhàng khi sử dụng và vẻ ngoài hấp dẫn giúp máy nhanh chóng chiếm được cảm tình từ phía người dùng.\r\n\r\nthiết kế Xiaomi Redmi Note 10S\r\n\r\nCông nghệ sạc nhanh 33W\r\nLà chiếc smartphone pin trâu mang trên mình viên pin dung lượng cao 5000mAh, Redmi Note 10S tự tin cung cấp cho bạn đủ năng lượng suốt cả ngày. Hơn nữa, với việc điện thoại hỗ trợ sạc siêu nhanh 33W, bạn chỉ mất 30 phút để sạc đầy 54% pin, luôn sẵn sàng cho mọi trải nghiệm.\r\n\r\nsạc nhanh Xiaomi Redmi Note 10S', 'https://images.fpt.shop/unsafe/fit-in/585x390/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/5/18/637569718504355303_xiaomi-note10s-xanh-1.jpg', 6490000, 4, 3);
 INSERT INTO `SANPHAM` (`id`, `ten`, `mota`, `anh`, `gia`, `id_nhasanxuat`, `id_theloai`) VALUES
 (25, 'Tai nghe AirPods Pro 2021', 'Đặc điểm nổi bật\r\nAirPods Pro 2021 sẽ giúp bạn cảm nhận trọn vẹn những giá trị làm nên tên tuổi của dòng tai nghe Apple như sự tinh xảo, độ nhỏ gọn và tính đa dụng thông qua hộp sạc đặc trưng. Sản phẩm sử dụng chip H1 thông minh và tăng cường chất âm thông qua Adaptive EQ. Những cải tiến hiệu quả trong phiên bản mới giúp AirPods Pro 2021 tương thích tốt với công nghệ sạc MagSafe.\r\n\r\nTai nghe AirPods Pro 2021\r\n\r\nĐỉnh cao của thiết kế in-ear\r\nRa đời để phục vụ gu thưởng thức âm nhạc của những người đòi hỏi cao về chất âm trên một chiếc tai nghe nhỏ gọn, AirPods Pro 2021 sử dụng phong cách thiết kế in-ear với đệm silicon đi sâu vào trong ống tai nhằm truyền tải rõ ràng từng tiết tấu, đồng thời tạo hiệu ứng cách âm tốt hơn.\r\n\r\nApple đã cho thấy sự chu đáo của mình khi cung cấp ba kích cỡ nút in-ear trong hộp đựng sản phẩm. Bạn có thể sử dụng tính năng Kiểm tra độ vừa vặn trên iPhone để tìm ra bộ đệm tai thoải mái nhất với bản thân.\r\n\r\nĐỉnh cao của thiết kế AirPods Pro 2021\r\n\r\nNhỏ nhắn, tinh tế và đẳng cấp\r\nAirPods Pro 2021 xây dựng kiểu theo phong cách đặc trưng của dòng AirPods với phần thân tai nghe không dây được thiết kế xuôi xuống khi đeo. Phiên bản 2021 của sản phẩm ghi nhận trọng lượng chỉ 5.4 gram cho mỗi bên tai nghe và 45.6 gram cho hộp sạc đi kèm.\r\n\r\nCầm sản phẩm trên tay, bạn sẽ cảm nhận rõ ràng sự tinh xảo, cao cấp đầy tính thẩm mỹ của mẫu tai nghe True-Wireless này. AirPods Pro ghi nhận chuẩn chống nước IPX4. Do đó, mồ hôi khi tập luyện hoặc những sự cố bất ngờ về nước sẽ chẳng thể làm ảnh hưởng đến độ bền bỉ của thiết bị.\r\n\r\nAirPods Pro 2021 Nhỏ nhắn, tinh tế và đẳng cấp\r\n\r\nTương thích với công nghệ sạc MagSafe\r\nVới cải tiến trên thế hệ mới, hộp sạc của chiếc AirPods Pro 2021 bạn đang theo dõi sẽ tương thích với các chuẩn sạc không dây trên thị trường, bao gồm cả sạc MagSafe, từ đó gia tăng tính tiện lợi và giúp bạn trải nghiệm trọn vẹn hơn sự tiện lợi của hệ sinh thái các sản phẩm Apple.\r\n\r\nSản phẩm ghi nhận tổng thời lượng pin tối đa 24 tiếng khi kết hợp cùng hộp sạc, mỗi bên tai có thể tích trữ đủ pin cho 4.5 giờ trải nghiệm liên. Khi pin yếu, AirPods Pro 2021 sẽ tự gửi thông báo đến iPhone hoặc thiết bị đang kết nối. Lúc này, bạn chỉ cần sạc 5 phút là sẽ có đủ pin cho 1 giờ nghe nhạc.\r\n\r\nAirPods Pro 2021 Tương thích với công nghệ sạc MagSafe\r\n\r\nTrải nghiệm âm thanh chuẩn Adaptive EQ\r\nBí quyết tăng cường chất âm của tai nghe AirPods Pro 2021 nằm ở công nghệ Adaptive EQ – hỗ trợ hiệu chỉnh âm thanh tự động dựa theo vòm tai và thể loại nhạc bạn nghe để đem tới chất âm tròn trịa và trọn vẹn nhất.\r\n\r\nMột micro hướng vào trong vòm tai sẽ tự động đo đạc tần số âm thanh, sau đó đưa ra những thay đổi hiệu quả nhằm đem lại trải nghiệm nghe nhạc ấn tượng. Chip H1 độc quyền của Apple sẽ đóng vai trò quan trọng trong quá trình hoạt động của Adaptive EQ, tạo nên sự khác biệt lớn về cảm nhận so với các dòng tai nghe True-Wireless trên thị trường.\r\n\r\nTrải nghiệm âm thanh AirPods Pro 2021 chuẩn Adaptive EQ\r\n\r\nChống ồn chủ động loại bỏ mọi tạp âm\r\nNgoài cơ chế ngăn chặn tạp âm thông qua các đệm tai silicon, AirPods Pro 2021 còn sử dụng công nghệ Chống Ồn Chủ Động (ANC) để ngăn không cho âm thanh từ môi trường lọt vào trong khoang tai, làm ảnh hưởng đến chất lượng đàm thoại hoặc chất âm khi đeo phụ kiện này.\r\n\r\nChìa khóa trong cơ chế chống ồn ANC của AirPods Pro 2021 nằm ở micro bố trí hướng ra ngoài, sẽ chủ động phát hiện những âm thanh nhiễu loạn từ môi trường và lập tức xử lý để đưa ra phương án triệt tiêu các tiếng ồn này trước khi ảnh hưởng tới người nghe. Việc quét tạp âm để khử ồn sẽ diễn ra liên tục ở tần suất 200 lần mỗi giây. Bạn hãy an tâm rằng trải nghiệm nghe nhạc với AirPods Pro 2021 sẽ luôn luôn trọn vẹn.\r\n\r\nChế độ xuyên âm AirPods Pro 2021\r\n\r\nChế độ xuyên âm để trò chuyện thoải mái\r\nSự góp mặt của Chế Độ Xuyên Âm sẽ giúp chủ nhân của AirPods Pro 2021 dễ dàng lắng nghe và nói chuyện với những người xung quanh mà không bị cản trở bởi chống ồn chủ động. Khi được kích hoạt, Chế Độ Xuyên Âm sẽ thông qua micro bên ngoài để truyền tải âm thanh vào trong khoang tai chỉ với một lần chạm nhẹ lên thân tai nghe. Nhờ đó, bạn sẽ không cảm thấy chút bất tiện nào.\r\n\r\nChống ồn chủ động AirPods Pro 2021\r\n\r\nTương thích tuyệt đối với sản phẩm Apple\r\nAirPods Pro 2021 ghi nhận sự tương thích tuyệt đối với các sản phẩm Apple như iPhone, iPad, máy Mac hay Apple Watch. Cơ chế điều chuyển thông minh của sản phẩm sẽ tự thay đổi thiết bị kết nối nhằm đem lại trải nghiệm sử dụng tiện lợi nhất.\r\n\r\nTrường hợp bạn đang kết nối sản phẩm với MacBook để nghe nhạc nhưng lại có cuộc gọi đến trên iPhone, AirPods Pro 2021 sẽ tự chuyển kết nối sang iPhone để bạn nhận cuộc gọi và nói chuyện thoải mái.\r\n\r\nAirPods Pro 2021 Tương thích tuyệt đối với sản phẩm Apple\r\n\r\nChạm nhẹ nhàng để điều khiển\r\nTai nghe AirPods Pro 2021 được trang bị bộ cảm ứng lực Force Touch trên thân thiết bị, phần này được làm lõm nhẹ và sẽ nhận lệnh từ người dùng thông qua bộ thao tác cử chỉ đơn giản gồm:\r\n\r\nChạm 1 lần: Dừng/phát nhạc hoặc nhận cuộc gọi đến trên thiết bị kết nối.\r\nChạm 2 lần: Chuyển tới bài hát kế tiếp.\r\nChạm 3 lần: Trở lại bài hát vừa phát.\r\nChạm và giữ: Gọi trợ lý ảo Siri.\r\nChạm nhẹ nhàng để điều khiển AirPods Pro 2021', 'https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/AnhNQ/23/tai-nghe-airpods-pro-2021-7.jpg', 4999000, 1, 6);
+
+--
+-- Đang đổ dữ liệu cho bảng `HOADON`
+--
+
+INSERT INTO `HOADON` (`id`, `id_khachhang`, `id_nhanvien`, `diachinhan`, `hotennhan`, `sodienthoainhan`, `thoigiandat`, `tongtien`, `trangthaidon`) VALUES
+(1, 2, 1, 'Hai Bà Trưng, Hà Nội', 'Nguyễn Tiến Chinh', '0393912312', '2022-01-09', 27599000, 4),
+(2, 2, 1, 'Hai Bà Trưng, Hà Nội', 'Nguyễn Tiến Chinh', '0393912312', '2022-01-09', 27599000, 4);
+
+--
+-- Đang đổ dữ liệu cho bảng `HOADONCHITIET`
+--
+
+INSERT INTO `HOADONCHITIET` (`id_hoadon`, `id_sanpham`, `soluong`) VALUES
+(1, 6, 1),
+(2, 6, 1);
+
+
+INSERT INTO `DANHGIA` (`id_khachhang`, `id_hoadon`, `id_sanpham`, `hoten`, `nhanxet`, `chatluong`, `thoigian`) VALUES
+(2, 1, 6, 'Nguyễn Tiến Chinh', 'Okie phết', 4, '2022-01-09'),
+(2, 2, 6, 'Chinh', 'Okie đó', 5, '2022-01-09');
 
 
 

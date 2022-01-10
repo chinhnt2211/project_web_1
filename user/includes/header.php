@@ -96,55 +96,55 @@ require_once __DIR__ . "/../../core/core.user.php";
             <div class="wrapper-bottom">
                 <ul class="bottom-menu">
                     <li>
-                        <a href="<?= DOMAIN ?>">
+                        <a href="<?= DOMAIN ?>user/category.php?category=3">
                             <i class="fas fa-mobile-alt"></i>
                             Điện thoại
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?= DOMAIN ?>user/category.php?category=5">
                             <i class="fas fa-laptop"></i>
                             Laptop
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?= DOMAIN ?>user/category.php?category=2">
                             <i class="fas fa-tablet-alt"></i>
                             Tablet
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?= DOMAIN ?>user/category.php?category=1">
                             <i class="fas fa-desktop"></i>
                             Máy tính bàn
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?= DOMAIN ?>user/category.php?category=4">
                             <i class="fas fa-microchip"></i>
                             Linh kiện máy tính
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?= DOMAIN ?>user/category.php?category=7">
                             <i class="fas fa-blender"></i>
                             Đồ gia dụng
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?= DOMAIN ?>user/category.php?category=8">
                             <i class="fas fa-gamepad"></i>
                             Thiết bị chơi game
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?= DOMAIN ?>user/category.php?category=6">
                             <i class="fas fa-headphones-alt"></i>
                             Phụ kiện
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?= DOMAIN ?>user/category.php?category=9">
                             <i class="fas fa-print"></i>
                             Thiết bị văn phòng
                         </a>

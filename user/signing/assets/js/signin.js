@@ -9,14 +9,15 @@ function checkForm() {
     const email = getElementValue('input[name ="email"]');
     const password = getElementValue('input[name ="password"]');
 
-
+    let regex_email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/mg;
+    let regex_password = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g;
     let result = true;
+
     // Email
     if (email.length === 0) {
         error_email.innerHTML = "*Không được để trống ô này";
         result = false;
     } else {
-        let regex_email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/mg;
         if (!(regex_email.test(email))) {
             error_email.innerHTML = "*Email không hợp lệ";
             result = false;
@@ -29,7 +30,6 @@ function checkForm() {
         error_password.innerHTML = "*Không được để trống ô này";
         result = false;
     } else {
-        let regex_password = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g;
         if (regex_password.test(password)) {
             error_password.innerHTML = "*Mật khẩu không hợp lệ";
             result = false;

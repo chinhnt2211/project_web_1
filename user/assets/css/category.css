@@ -1,0 +1,276 @@
+/* Slide */
+.banner-content{
+    flex-direction: row;
+    background-color: #fff;
+    width: 1190px;
+    height: 600px;
+    border-radius: 18px;
+    box-shadow: rgb(98 98 98 / 15%) 0px 1px 30px 2px;
+}
+.banner-content .homepage-carousel{
+    width: 1130px;
+    height: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 30px auto;
+    background-color: #ff5000;
+}
+.wrapper-slide-banner{
+    height: 260px;
+    width: 1130px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+.swiper-wrapper{
+    position: relative;
+    z-index: 1;
+    display: flex;
+}
+.swiper-slide{
+    float: left;
+    width: 1130px;
+    height: 260px;  
+}
+.swiper-slide .image-slide{
+    width: 1130px;
+    height: 260px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.grid-line-1{
+    flex-direction: row!important;
+    margin: 10px auto!important;
+    width: 1130px;
+    justify-content: space-between;
+}
+.grid-line-1 .grid {
+    width: 525px;
+    height: 224px;
+}
+.grid-line-1 .grid .grid-header {
+    flex-direction: row;
+    align-items: center;
+}
+.grid-line-1 .grid .grid-header .grid-title {
+    margin-left: 5px;
+    font-weight: 400;
+    font-size: 16px;
+}
+.grid-line-1 .grid .grid-content {
+    width: 525px;
+    height: 200px;
+    margin-top: 5px;
+    border-radius: 12px;
+    background: url(https://img.alicdn.com/imgextra/i1/O1CN01g2P2Dl1mTta3PtJVP_!!6000000004956-2-tps-315-200.png);
+    background-size: 100% 100%!important;
+}
+.grid-line-1 .grid .grid-content .ads-items {
+    margin-top: 50px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.grid-line-1 .grid .grid-content .ads-items .ads-item {
+    display: flex;
+    position: relative;
+    border-radius: 12px;
+    text-decoration: none;
+    overflow: hidden;
+    margin: 0 5px;
+}
+.grid-line-1 .grid .grid-content .ads-items .ads-item .ads-item-price {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100px;
+    height: 26px;
+    align-items: center;
+    justify-content: center;
+}
+.grid-line-1 .grid .grid-content .ads-items .ads-item .ads-item-price .price-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.grid-line-1 .grid .grid-content .ads-items .ads-item .ads-item-price  .ads-price-text {
+    margin-left: 35%;
+    z-index: 1;
+    font-size: 16px;
+    color: #fff;
+}
+
+
+/* Content */
+.content-view{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-content: flex-start;
+    border: 0 solid #000;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+.content-text-v2{
+    box-sizing: border-box;
+    display: block;
+    font-size: 4.26667vw;
+    white-space: pre-wrap;
+}
+.container-content{
+    width: 1190px;
+    margin: 40px auto;
+}
+.main-content{
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 20px 0;
+    background: #fff;
+    box-shadow: rgb(98 98 98 / 15%) 0px 1px 30px 2px;
+}
+/* Item */
+.main-content  .item-feed{
+    background: #fff;
+    padding: 0 18px;
+    width: 1190px;
+}
+.item-feed  .item-feed-header{
+    height: 70px;
+    flex-direction: row;
+    align-items: center;
+}
+.item-feed  .item-feed-header  .header-title{
+    font-weight: 700;
+    font-size: 24px;
+    color: #333;
+    margin-right: 5px;
+}
+.header-page-number{
+    font-weight: 400;
+    font-size: 16px;
+    color: #333;
+}
+.item-feed  .list{
+    width: 1154px;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.item-feed  .list  .item{
+    border: solid 1px #e9ecef;
+    width: 220px;
+    height: 320px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    padding: 7px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+.item-feed .list .item:hover {
+    background: #fff;
+    box-shadow: 0 19px 39px 0 rgb(0 0 0 / 20%);
+}
+/* Item - image */
+.item-feed  .list  .item  .item-image-wrap{
+    width: 201px;
+    height: 215px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #f4f4f4;
+}
+.item-feed  .list  .item  .item-image-wrap  .item-image {
+    width: 201px;
+    height: 215px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+/* Item - title */
+.item-feed  .list  .item  .item-title {
+    margin: 10px 5px 5px;
+    height: 44px;
+    overflow: hidden;
+}
+.item-feed  .list  .item  .item-title  .title-text {
+    line-height: 22px;
+    font-size: 16px;
+    color: #111;
+}
+/* Item - price */
+.item-feed  .list  .item  .item-price {
+    flex-direction: row;
+    align-items: center;
+}
+.item-feed   .list  .item  .item-price  .symbol-text {
+    font-size: 14px;
+    margin-top: 4px;
+    color: #ff5000;
+}
+.item-feed  .list  .item  .item-price  .price-text {
+    font-size: 22px;
+    color: #ff5000;
+}
+.list-items{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    list-style: none;
+    padding: 0px;
+    width: 802px;
+    margin: 10px;
+}
+.items{
+    height: 350px;
+    width: 200px;
+    background-color: pink;
+    border: 1px solid black;
+    margin: 0px;
+}
+.items .image-item{
+    height: 180px;
+    width: 180px;
+    border: 1px solid black;
+    background-size: cover;
+    background-position: center;
+
+}
+.items .name-item{
+    margin: 10px;
+}
+/* Page - Number */
+.page-number{
+    padding: 0px 20px;
+    height: 50px;
+    align-items: center;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+}
+.page-number  .pre{
+    transform: rotate(180deg);
+}
+.page-number-title{
+    padding: 0px 10px;
+    display: block;
+    height: 30px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-number-title  i{
+    color: #000;
+    font-size: 20px;
+}

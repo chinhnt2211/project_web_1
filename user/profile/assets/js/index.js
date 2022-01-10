@@ -4,7 +4,6 @@ var yearSelect = document.querySelector('#year');
 var monthSelect = document.querySelector('#month');
 var daySelect = document.querySelector('#day');
 
-
 function populateDays(month) {
     // delete the current set of <option> elements out of the
     // day <select>, ready for the next set to be injected
@@ -82,4 +81,56 @@ var previousDay;
 // see end of populateDays() for usage
 daySelect.onchange = function() {
     previousDay = daySelect.value;
+}
+
+
+function getElementValue(element) {
+    return x = document.querySelectorAll(element)[0].value;
+}
+document.querySelector('.btn-save .save-info').onclick = function(){
+    const message_error = document.querySelector('.error-message span');
+
+    const name = getElementValue('input[name ="name"]');
+    const phone_number = getElementValue('input[name ="phone_number"]');
+    const address = getElementValue('input[name ="address"]');
+    
+    let regex_name = /^(?:[A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀẾỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴÝỶỸ][a-z_àáâãèéêếìíòóôõùúăđĩũơễệỉịọỏốồổỗộớờởỡợụủứừưăạảấầẩẫậắằẳẵặẹẻẽềềểửữựỳỵỷỹ]*\s?)+$/gmu;
+    let regex_phone_number = /^[0-9]+$/g;
+    let regex_address = /^(?:[A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀẾỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴÝỶỸa-z_àáâãèéêếìíòóôõùúăđĩũơễệỉịọỏốồổỗộớờởỡợụủứừưăạảấầẩẫậắằẳẵặẹẻẽềềểửữựỳỵỷỹ,]*\s?)+$/gm;
+    // check input is empty 
+    // Name
+    if (name.length === 0) {
+        message_error.innerHTML = "Không được để trống ô này";
+        return false;
+    } else {
+        if (!(regex_name.test(name))) {
+            message_error.innerHTML = "*Họ và tên phải viết hoa các chữ cái đầu và không chứa kí tự đặc biệt";
+            return false;
+        }else{
+            message_error.innerHTML = "";
+        };
+    }
+    // Phone Number
+    if (phone_number.length === 0) {
+        message_error.innerHTML = "*Không được để trống ô này";
+        return false;
+    }else{
+        if (!(regex_phone_number.test(phone_number))) {
+            message_error.innerHTML = "*Số điện thoại không hợp lệ";
+            return false;
+        }else{
+            message_error.innerHTML = ""; 
+        };
+    }
+    
+    if (address.length != 0) {
+        if (!(regex_address.test(address))) {
+            message_error.innerHTML = "*Địa chỉ không hợp lệ";
+            return false;
+        }else{
+            message_error.innerHTML = ""; 
+        };
+    }// Password
+    
+    return true;
 }

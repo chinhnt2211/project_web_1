@@ -1,8 +1,8 @@
 function getElementValue(element) {
     return x = document.querySelectorAll(element)[0].value;
 }
-
-function checkForm() {
+// document.querySelector('.form .btn-signup').onclick  = 
+document.querySelector(".btn-signup").onclick =  function(){
     const error_name = document.querySelector("p.error_name");
     const error_email = document.querySelector("p.error_email");
     const error_phone_number = document.querySelector("p.error_phone_number");
@@ -15,6 +15,10 @@ function checkForm() {
     const password = getElementValue('input[name ="password"]');
     const password_again = getElementValue('input[name ="password_again"]');
 
+    let regex_name = /^(?:[A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀẾỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴÝỶỸ][a-z_àáâãèéêếìíòóôõùúăđĩũơễệỉịọỏốồổỗộớờởỡợụủứừưăạảấầẩẫậắằẳẵặẹẻẽềềểửữựỳỵỷỹ]*\s?)+$/gmu;
+    let regex_email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/mg;
+    let regex_phone_number = /^[0-9]+$/g;
+    let regex_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/gm;
 
     let result = true;
     // check input is empty 
@@ -24,9 +28,8 @@ function checkForm() {
         error_name.classList.add('active-error');
         result = false;
     } else {
-        let regex_name = /^(?:[A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀẾỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴÝỶỸ][a-z_àáâãèéêếìíòóôõùúăđĩũơễệỉịọỏốồổỗộớờởỡợụủứừưăạảấầẩẫậắằẳẵặẹẻẽềềểửữựỳỵỷỹ]*\s?)+$/gmu;
         if (!(regex_name.test(name))) {
-            error_name.innerHTML = "*Họ và tên phải viết hoa các chữ cái đầu";
+            error_name.innerHTML = "*Họ và tên phải viết hoa các chữ cái đầu và không chứa kí tự đặc biệt";
             error_name.classList.add('active-error');
             result = false;
         }else{
@@ -40,7 +43,6 @@ function checkForm() {
         error_email.classList.add('active-error');
         result = false;
     } else {
-        let regex_email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/mg;
         if (!(regex_email.test(email))) {
             error_email.innerHTML = "*Email không hợp lệ";
             error_email.classList.add('active-error');
@@ -56,7 +58,6 @@ function checkForm() {
         error_phone_number.classList.add('active-error');
         result = false;
     }else{
-        let regex_phone_number = /^[0-9]+$/g;
         if (!(regex_phone_number.test(phone_number))) {
             error_phone_number.innerHTML = "*Số điện thoại không hợp lệ";
             error_phone_number.classList.add('active-error');
@@ -72,7 +73,6 @@ function checkForm() {
         error_password.classList.add('active-error');
         result = false;
     } else {
-        let regex_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/gm;
         if (!(regex_password.test(password))) {
             error_password.innerHTML = "*Mật khẩu không hợp lệ";
             error_password.classList.add('active-error');

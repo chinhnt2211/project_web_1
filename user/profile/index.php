@@ -52,7 +52,7 @@
                     <span>Ảnh</span>
                     <input type="file" name="avatar" accept=".jpg, .png, .jpeg, .gif">
                 </div>
-                <div class=" form-input">
+                <div class="form-input">
                     <span>Giới tính</span>
                     <?php switch ($gender) {
                         case 0: ?>
@@ -130,19 +130,18 @@
                         </div>
                     </div>
                 </div>
-                <div class=" error-message">
+                <div class="error-message">
                     <span>
                         <?php
                         if (isset($_SESSION["error"])) {
                             echo "*" . $_SESSION["error"];
-                            unset($_SESSION["error"]);
                         };
                         ?>
                     </span>
                 </div>
             </div>
-            <div class=" btn-save">
-                <button class="save-info" type="submit" onclick="return checkForm()">Lưu</button>
+            <div class="btn-save">
+                <button class="save-info" type="submit">Lưu</button>
             </div>
         </form>
     </div>
