@@ -64,7 +64,6 @@
     </div>
 </footer>
 </body>
-
 </html>
 <?php
 $mysqli->close();

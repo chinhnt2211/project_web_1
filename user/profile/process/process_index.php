@@ -41,7 +41,7 @@ function procesImage()
 
 // Xu ly form update
 if (!isset($_SESSION["id"])) {
-    header("location: ../index.php");
+    header("location: ../../index.php");
 }
 $sql = "SELECT * FROM KHACHHANG
 WHERE id = '$_SESSION[id]'";
@@ -119,5 +119,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // query($sql);
     $_SESSION['name'] = $name;
     $_SESSION['avatar'] = $avatar;
-    if (empty($_SESSION["error"])) header("location:./index.php");
+    if (empty($_SESSION["error"])) header("location:../index.php");
 }
