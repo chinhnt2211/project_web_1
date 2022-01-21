@@ -180,4 +180,4 @@ $result = select($sql);
     </div>
 </div>
 <!-- Footer -->
-<!-- <?php require_once("./includes/footer.php"); ?> -->
+<?php require_once("./includes/footer.php"); ?>

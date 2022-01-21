@@ -1,13 +1,21 @@
-table{
-    border: 1px solid black;
+/* Global */
+.content-view{
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-content: flex-start;
+    border: 0 solid #000;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
 }
-thead{
-    border: 1px solid black;
-
-}
-td{
-    border: 1px solid black;
-    padding: 10px;
+.content-text-v2{
+    box-sizing: border-box;
+    display: block;
+    font-size: 4.26667vw;
+    white-space: pre-wrap;
 }
 .image-product{
     height: 200px;
@@ -15,4 +23,161 @@ td{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: none;
+}
+/* Content */
+.container-content{
+    width: 1190px;
+    margin: 40px auto;
+}
+.main-content{
+    flex-direction: row;
+    justify-content: space-between;
+}
+.main-content .main-spot{
+    background-color: #fff;
+    width: 860px;
+    min-height: 570px;
+    border-radius: 18px;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+.main-content .main-menu{
+    background-color: #fff;
+    width: 310px;
+    height: 570px;
+    border-radius: 18px;
+}
+/* Menu */
+.main-menu .user-image{
+    width: 220px;
+    height: 220px;
+    margin: 40px auto;
+    border-radius: 18px;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.main-menu .user-service {
+    border-top: 1px solid #e4e4e4;
+    width: 310px;
+    padding: 15px 15px;
+    height: 240px;
+}
+.main-menu .user-service .service {
+    border-bottom: 1px solid #e4e4e4;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 48px;
+    width: 280px;
+}
+.main-menu .user-service .service .service-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 5px;
+}
+.main-menu .user-service .service .service-title{
+    height: 48px;
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.main-menu .user-service .service .service-icon i {
+    font-size: 24px;
+}
+.main-menu .user-service .service .service-title span {
+    font-size: 16px;
+}
+.service .active {
+    color: #ccc;
+}
+/* Form - Profile */
+.main-spot .form-profile{
+    width: 800px;
+    margin: 0px auto;
+}
+.main-spot .form-profile .label-form{
+    height: 60px;
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 20px;
+    color: rgba(85,85,85,.8);
+}
+.main-spot .form-profile .label-form span{
+    text-transform: uppercase;
+    font-size: 1.125rem;
+    color: #000;
+}
+.main-spot .form-profile .form-input{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.main-spot .form-profile .form-input span{
+    font-size: 16px;
+    color: rgba(85,85,85,.8);
+    width: 200px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.main-spot .form-profile .form-input input[type="text"], .main-spot .form-profile .form-input input[type="number"]{
+    width: 540px;
+    height: 36px;
+    border: none;
+    border: 1px solid #e4e4e4;
+    padding: 10px;
+    display: block;
+}
+.main-spot .btn-save{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 15px;
+    padding-right: 15px;
+}
+.main-spot .btn-save .save-info{
+    cursor: pointer;
+    background: #ee4d2d;
+    border: 0;
+    border-radius: 5px;
+    height: 48px;
+    width: 80px;
+    color: #fff;
+    font-size: 14px;
+}
+.main-spot .form-profile .error-message{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    margin: 10px;
+}
+.main-spot .form-profile .total-price{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    margin: 10px;
+    font-size: 18px;
+}
+.main-spot .form-profile .total-price span{
+    text-transform: uppercase;
+}
+.main-spot .form-profile .error-message span {
+    color: #ee4d2d;
+    
 }

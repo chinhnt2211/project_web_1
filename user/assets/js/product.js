@@ -1,17 +1,39 @@
+$(document).ready(function () {
+    $(".btn-add-to-cart").click(function () {
+        let id = $(this).data('id-product');
+        let quantity = $('input[name = quantity]').val();
+        $.ajax({
+            type: "GET",
+            url: "./process_product.php",
+            data: {
+                "id-product": id,
+                "quantity": quantity,
+            },
+            // dataType: "dataType",
+            // success: function (response) {
+
+            // }
+        }).done(function (data) {
+            console.log(data);
+        }).fail(function (data) {
+            console.log(data);
+        });
+    })
+});
 // Lấy 2 button và thẻ input
 var minus = document.querySelector(".input-quantity .minus");
 var plus = document.querySelector(".input-quantity .plus");
 var input_quantity = document.querySelector(".input-quantity .input-qty");
 
 // Thiết lập click cho button 1
-minus.onclick = function() {
+minus.onclick = function () {
     if (input_quantity.value > 1) {
         input_quantity.value = parseInt(input_quantity.value) - 1;
     }
 };
 
 // Thiết lập click cho button 2
-plus.onclick = function() {
+plus.onclick = function () {
     input_quantity.value = parseInt(input_quantity.value) + 1;
 };
 
@@ -20,10 +42,10 @@ var popup = document.getElementById("model-popup");
 var open_popup = document.getElementById("open-model");
 var close_popup = document.getElementById("close-model");
 
-open_popup.onclick = function(){
+open_popup.onclick = function () {
     popup.style.display = "block";
 }
-close_popup.onclick = function(){
+close_popup.onclick = function () {
     popup.style.display = "none";
 }
 
@@ -35,7 +57,7 @@ var three_star = document.querySelector(".rating-star-input .three-star");
 var four_star = document.querySelector(".rating-star-input .four-star");
 var five_star = document.querySelector(".rating-star-input .five-star");
 
-one_star.onclick = function(){
+one_star.onclick = function () {
     input_rating.value = 1;
     one_star.style.cssText = "color: #fc0!important;"
     two_star.style.cssText = "color: #ccc!important;"
@@ -43,7 +65,7 @@ one_star.onclick = function(){
     four_star.style.cssText = "color: #ccc!important;"
     five_star.style.cssText = "color: #ccc!important;"
 }
-two_star.onclick = function(){
+two_star.onclick = function () {
     input_rating.value = 2;
     one_star.style.cssText = "color: #fc0!important;"
     two_star.style.cssText = "color: #fc0!important;"
@@ -51,7 +73,7 @@ two_star.onclick = function(){
     four_star.style.cssText = "color: #ccc!important;"
     five_star.style.cssText = "color: #ccc!important;"
 }
-three_star.onclick = function(){
+three_star.onclick = function () {
     input_rating.value = 3;
     one_star.style.cssText = "color: #fc0!important;"
     two_star.style.cssText = "color: #fc0!important;"
@@ -59,7 +81,7 @@ three_star.onclick = function(){
     four_star.style.cssText = "color: #ccc!important;"
     five_star.style.cssText = "color: #ccc!important;"
 }
-four_star.onclick = function(){
+four_star.onclick = function () {
     input_rating.value = 4;
     one_star.style.cssText = "color: #fc0!important;"
     two_star.style.cssText = "color: #fc0!important;"
@@ -67,7 +89,7 @@ four_star.onclick = function(){
     four_star.style.cssText = "color: #fc0!important;"
     five_star.style.cssText = "color: #ccc!important;"
 }
-five_star.onclick = function(){
+five_star.onclick = function () {
     input_rating.value = 5;
     one_star.style.cssText = "color: #fc0!important;"
     two_star.style.cssText = "color: #fc0!important;"

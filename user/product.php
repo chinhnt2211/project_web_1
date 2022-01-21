@@ -108,7 +108,7 @@ function check_review_user()
                     <span class="header-price">₫<?= number_format($item['gia'], 0, '.', ',') ?></span>
                 </div>
             </div>
-            <form class="content-view item-feed-buy" action="./process_product.php" method="GET">
+            <div class="content-view item-feed-buy">
                 <div class="item-select-quantity">
                     <div class="item-title-quantity">Số lượng</div>
                     <div class="item-btn-quantity">
@@ -123,12 +123,12 @@ function check_review_user()
                 <div class="item-btn-buy">
                     <input type="hidden" name="id-product" value="<?= $_GET["id"] ?>">
                     <?php if (isset($_SESSION["id"])) { ?>
-                        <button>Thêm vào giỏ hàng</button>
+                        <button data-id-product="<?= $_GET["id"] ?>" class="btn-add-to-cart" >Thêm vào giỏ hàng</button>
                     <?php } else { ?>
                         <button onclick="location.href='<?= DOMAIN ?>user/signing/signin.php'" type="button">Thêm vào giỏ hàng</button>
                     <?php } ?>
                 </div>
-            </form>
+                    </div>
         </div>
     </div>
     <div class="content-view container-description">
@@ -312,6 +312,7 @@ function check_review_user()
         </div>
     </div>
 </div>
-<script src="./assets/js/product.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./assets/js/product.js" type="text/javascript"></script>
 <!-- Footer -->
 <?php require_once "./includes/footer.php" ?>

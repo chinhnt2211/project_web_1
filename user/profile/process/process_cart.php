@@ -1,23 +1,32 @@
 <?php
 
-require_once "../../core/core.user.php";
+require_once "../../../core/core.user.php";
 
-if (isset($_GET['id_dec'])) {
-    $id = $_GET['id_dec'];
-    if ($_SESSION['cart'][$id]['quantity'] > 1) {
-        $_SESSION['cart'][$id]['quantity']--;
-    } else {
-        unset($_SESSION['cart'][$id]);
+if ($_SERVER["REQUEST_METHOD"] === "GET"){
+    if (isset($_GET['id']) && isset($_GET['type'])) {
+        $id = $_GET['id'];
+        switch ($_GET['type']) {
+            case "increase":
+                $_SESSION['cart'][$id]['quantity']++;
+                echo "increase";
+                break;
+            case "decrease":
+                if ($_SESSION['cart'][$id]['quantity'] > 1) {
+                    $_SESSION['cart'][$id]['quantity']--;
+                    echo "decrease";
+                } else {
+                    unset($_SESSION['cart'][$id]);
+                        echo "delete";
+                };
+                break;
+            case "delete":
+                unset($_SESSION['cart'][$id]);
+                echo "delete";
+                break;
+        }
     }
 }
-if (isset($_GET['id_inc'])) {
-    $id = $_GET['id_inc'];
-    $_SESSION['cart'][$id]['quantity']++;
-}
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-    unset($_SESSION['cart'][$id]);
-}
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_SESSION['id'];
@@ -41,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     foreach ($cart as $product_id => $each) {
         $quantity = $each['quantity'];
-        insert("HOADONCHITIET" , [
+        insert("HOADONCHITIET", [
             "id_hoadon" => $order_id,
             "id_sanpham" => $product_id,
             "soluong" => $quantity,
@@ -50,5 +59,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     unset($_SESSION['cart']);
     unset($_SESSION["tongtien"]);
 }
-
-header("location:cart.php");

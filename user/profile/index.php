@@ -1,7 +1,7 @@
 <!-- Header -->
 <?php require_once "../includes/header.php" ?>
 <!-- Process-Content -->
-<?php require_once "./process_index.php" ?>
+<?php require_once "./process/process_index.php" ?>
 <!-- Content -->
 <style>
     @import url("./assets/css/index.css");
