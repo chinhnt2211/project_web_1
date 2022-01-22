@@ -65,15 +65,6 @@ CREATE TABLE CAUHINH(
     constraint fk_cauhinh_nch foreign key (id_nhomcauhinh) references NHOMCAUHINH(id)
 );
 
-CREATE TABLE CAUHINHCHITIET(
-    id_sanpham int not null,
-    id_cauhinh int not null,
-    giatri int,
-    primary key (id_sanpham, id_cauhinh),
-    constraint fk_cauhinhchitiet_sp foreign key (id_sanpham) references SANPHAM(id),
-    constraint fk_cauhinhchitiet_ch foreign key (id_cauhinh) references CAUHINH(id)
-);
-
 CREATE TABLE SANPHAM(
     id int not null primary key auto_increment,
     ten varchar(100) not null,
@@ -88,6 +79,15 @@ CREATE TABLE SANPHAM(
     id_theloai int not null,
     constraint fk_sanpham_nsx foreign key (id_nhasanxuat) references NHASANXUAT(id),
     constraint fk_sanpham_tl foreign key (id_theloai) references THELOAI(id)
+);
+
+CREATE TABLE CAUHINHCHITIET(
+    id_sanpham int not null,
+    id_cauhinh int not null,
+    giatri int,
+    primary key (id_sanpham, id_cauhinh),
+    constraint fk_cauhinhchitiet_sp foreign key (id_sanpham) references SANPHAM(id),
+    constraint fk_cauhinhchitiet_ch foreign key (id_cauhinh) references CAUHINH(id)
 );
 
 CREATE TABLE HOADONCHITIET(
