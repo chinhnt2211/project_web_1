@@ -1,34 +1,62 @@
-*{
-    padding: 0;
-    box-sizing: border-box;
-    margin: 0;
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
-body{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 16px;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  background-color: #ecedf1;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
 }
 
-.login-screen{
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.left-login {
+  padding: 30px;
+  max-width: 380px;
+  width: 100%;
+  background-color: #fff;
+  border-right: 1px solid #e4e7ea;
+  display: flex;
+  align-items: center;
 }
 
-.login-container{
-    max-width: 100%;
-    min-width: 400px;
-    text-align: center;
+.container-login {
+  flex: 1;
 }
 
-.login-container input{
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
+.container-login h1 {
+  margin-bottom: 20px;
 }
 
-.login-container button{
-    padding: 10px;
-    margin-top: 10px;
+.label input {
+  padding: 10px;
+  border: 1px solid #aaa;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+button {
+  background-image: linear-gradient(to bottom, #999, #777);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #888;
+  cursor: pointer;
+}
+
+.right-login {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .right-login {
+      display: none;
+  }
 }

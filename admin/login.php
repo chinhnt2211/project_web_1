@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($kiemtra->num_rows > 0) {
             $_SESSION["staff_id"] = $kiemtra->fetch_assoc()["id"];
             // Test nen ko de ban goc
-            header("Location: ../admin/"); 
+            header("Location: ../admin/");
         } else {
             $error_message = "Tài khoản và mật khẩu vừa nhập không chính xác";
         }
@@ -37,8 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 
 <body>
-    <div class="login-screen">
-        <div class="login-container">
+
+    <div class="left-login">
+        <div class="container-login">
             <h1>Đăng nhập</h1>
             <?php if ($error_message !== "") { ?>
                 <div style="border: 2px dashed orange;background: #fff5e2;color: #e99700;padding: 5px 10px;margin: 10px 0px;">
@@ -46,15 +47,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
             <?php } ?>
             <form method="post" action="login.php">
-                <div>
+                <div class="label">
                     <input type="email" name="email" placeholder="Nhập tên tài khoản" required>
                 </div>
-                <div>
+                <div class="label">
                     <input type="password" name="password" placeholder="Nhập mật khẩu" required>
                 </div>
                 <button type="submit">Đăng nhập</button>
             </form>
         </div>
+    </div>
+
+    <div class="right-login">
+        Quản trị hệ thống
     </div>
 </body>
 

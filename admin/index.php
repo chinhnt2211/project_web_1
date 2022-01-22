@@ -18,52 +18,52 @@ $dulieu = select("SELECT * FROM theloai");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bảng điều khiển</title>
-    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/index2.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 
 <body>
-    <h1>
-        Bảng điều khiển
-    </h1>
-    <ul>
-        <li class="active"><a href="./">Danh mục</a></li>
-        <li><a href="./brand.php">Nhà sản xuất</a></li>
-        <li><a href="./product.php">Sản phẩm</a></li>
-        <li><a href="./user.php">Người dùng</a></li>
-        <li><a href="./staff.php">Nhân sự</a></li>
-        <li><a href="./cart.php">Giỏ hàng</a></li>
-    </ul>
-    <div class="toolbar">
-        <div>
-            <a href="./category_add.php">Sửa danh mục</a>
-        </div>
-        <div>
-            <form action=""><input type="search" name="search"><input type="submit" value="Tìm kiếm"></form>
+    <div class="header">
+        <div class="max h-full mx-auto p-10">
+            Quản trị hệ thống
         </div>
     </div>
 
-    <div class="result">
+    <div class="nav">
+        <div class="max flex justify-between mx-auto h-full p-10">
+            <div class="nav-menu">
+                <a href="./">Trang chủ</a>
+            </div>
+            <div class="nav-user">
+                Thoát
+            </div>
+        </div>
+    </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Tên danh mục</td>
-                    <td>Thao tác</td>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($dulieu as $item) { ?>
-                    <tr>
-                        <td><?= $item["id"] ?></td>
-                        <td><?= $item["ten"] ?></td>
-                        <td> <a href="./category_edit.php?id=<?= $item["id"] ?>">Sửa</a> | <a href="./category_delete.php?id=<?= $item["id"] ?>">Xoá</a></td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+    <div class="flex-1">
+
+        <div class="max mx-auto flex flex-row">
+            <div class="content-left p-10" style="overflow: auto;">
+                <ul>
+                    <li class="current"><a href="./"><i class="fas fa-lg fa-tachometer-alt"></i> Tổng quát</a></li>
+                    <li><a href="./category.php"><i class="fas fa-lg fa-folder"></i> Danh mục</a></li>
+                    <li><a href="./brand.php"><i class="fas fa-lg fa-copyright"></i> Nhà sản xuất</a></li>
+                    <li><a href="./product.php"><i class="fas fa-lg fa-cookie-bite"></i> Sản phẩm</a></li>
+                    <li><a href="./user.php"><i class="fas fa-lg fa-user"></i> Khách hàng</a></li>
+                    <li><a href="./staff.php"><i class="fas fa-lg fa-user-tie"></i> Nhân viên</a></li>
+                    <li><a href="./cart.html"><i class="fas fa-lg fa-shopping-cart"></i> Đơn hàng</a></li>
+                </ul>
+            </div>
+            <div class="flex-1 p-10">
+                <h1><i class="fas fa-tachometer-alt"></i> Tổng quát</h1>
+                <div class="box p-10 mt-10">
+                    Tạm chưa có thông tin gì
+                </div>
+            </div>
+        </div>
 
     </div>
+
 </body>
 
 </html>
