@@ -56,9 +56,9 @@ $dulieu = select("SELECT * FROM NHASANXUAT ORDER BY id DESC");
                 </ul>
             </div>
             <div class="flex-1 p-10">
-                <h1><i class="fas fa-lg fa-folder"></i> Danh mục</h1>
+                <h1><i class="fas fa-lg fa-copyright"></i> Nhà sản xuất</h1>
                 <div class="mt-10">
-                    <a class="button button-green" href="./category_add.php"><i class="fas fa-plus"></i> Thêm danh mục</a>
+                    <a class="button button-green" href="./category_add.php"><i class="fas fa-plus"></i> Thêm nhà sản xuất</a>
                 </div>
                 <div class="box mt-10">
                     <table>
@@ -84,48 +84,6 @@ $dulieu = select("SELECT * FROM NHASANXUAT ORDER BY id DESC");
         </div>
 
     </div>
-    <!-- <h1>
-        Bảng điều khiển
-    </h1>
-    <ul>
-        <li><a href="./">Danh mục</a></li>
-        <li class="active"><a href="./brand.php">Nhà sản xuất</a></li>
-        <li><a href="./product.php">Sản phẩm</a></li>
-        <li><a href="./user.php">Người dùng</a></li>
-        <li><a href="./staff.php">Nhân sự</a></li>
-        <li><a href="./cart.php">Giỏ hàng</a></li>
-    </ul>
-    <div class="toolbar">
-        <div>
-            <a href="./brand_add.php">Thêm nhà sản xuất</a>
-        </div>
-        <div>
-            <form action=""><input type="search" name="search"><input type="submit" value="Tìm kiếm"></form>
-        </div>
-    </div>
-
-    <div class="result">
-
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tên nhà sản xuất</th>
-                    <th>Thao tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($dulieu as $item) { ?>
-                <tr>
-                    <td><?= $item["id"] ?></td>
-                    <td><?= $item["ten"] ?></td>
-                        <td> <a href="./brand_edit.php?id=<?= $item["id"] ?>">Sửa</a> | <a href="./brand_delete.php?id=<?= $item["id"] ?>">Xoá</a></td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-
-    </div> -->
 </body>
 
 </html>
