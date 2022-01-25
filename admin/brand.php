@@ -7,7 +7,19 @@ if ($sid === NULL) {
     die();
 }
 
-$dulieu = select("SELECT * FROM NHASANXUAT ORDER BY id DESC");
+$gpage = isset($_GET["page"]) ? (int)($_GET["page"]) : 1;
+
+$page = ($gpage - 1) * 10;
+$max = 10;
+
+$search = isset($_GET["search"]) ? (string)($_GET["search"]) : "";
+$querySearch = "";
+if ($search) {
+    $querySearch = " WHERE ten LIKE '%" . addslashes($search) . "%'";
+}
+
+$dulieu = select("SELECT * FROM NHASANXUAT " . $querySearch . " ORDER BY id DESC LIMIT 0, 10");
+$soluong = query("SELECT * FROM NHASANXUAT " . $querySearch . "")->num_rows;
 ?>
 
 <!DOCTYPE html>
@@ -57,8 +69,14 @@ $dulieu = select("SELECT * FROM NHASANXUAT ORDER BY id DESC");
             </div>
             <div class="flex-1 p-10">
                 <h1><i class="fas fa-lg fa-copyright"></i> Nhà sản xuất</h1>
-                <div class="mt-10">
+                <div class="mt-10 flex justify-between">
                     <a class="button button-green" href="./category_add.php"><i class="fas fa-plus"></i> Thêm nhà sản xuất</a>
+                    <form action="" method="get">
+                        <input type="text" name="search" value="<?= $search ?>" placeholder="Tìm kiếm dữ liệu..." require>
+                        <?php if ($gpage) { ?>
+                            <input type="hidden" name="page" value="<?= $gpage ?>">
+                        <?php } ?>
+                    </form>
                 </div>
                 <div class="box mt-10">
                     <table>
@@ -80,6 +98,22 @@ $dulieu = select("SELECT * FROM NHASANXUAT ORDER BY id DESC");
                         </tbody>
                     </table>
                 </div>
+
+                <?php if ($soluong > 0) { ?>
+                    <div class="box page mt-10">
+                        <?php
+                        for ($i = 1; $i <= ceil($soluong / $max); ++$i) {
+                        ?><a href="./brand.php?page=<?= $i ?><?php if ($search) {
+                                                                echo '&search=' . $search;
+                                                            } ?>" class="page-item<?php if ($gpage == $i) {
+                                                                                    echo ' page-current';
+                                                                                } ?>">
+                                <?= $i ?>
+                            </a><?php
+                            }
+                                ?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
 

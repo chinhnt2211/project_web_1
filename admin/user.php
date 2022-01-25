@@ -7,7 +7,19 @@ if ($sid === NULL) {
     die();
 }
 
-$dulieu = select("SELECT * FROM KHACHHANG");
+$gpage = isset($_GET["page"]) ? (int)($_GET["page"]) : 1;
+
+$page = ($gpage - 1) * 10;
+$max = 10;
+
+$search = isset($_GET["search"]) ? (string)($_GET["search"]) : "";
+$querySearch = "";
+if ($search) {
+    $querySearch = " WHERE hoten LIKE '%" . addslashes($search) . "%'";
+}
+
+$dulieu = select("SELECT * FROM KHACHHANG " . $querySearch . " ORDER BY id DESC LIMIT 0, 10");
+$soluong = query("SELECT * FROM KHACHHANG " . $querySearch . "")->num_rows;
 ?>
 
 <!DOCTYPE html>
@@ -57,8 +69,14 @@ $dulieu = select("SELECT * FROM KHACHHANG");
             </div>
             <div class="flex-1 p-10">
                 <h1><i class="fas fa-lg fa-user"></i> Khách hàng</h1>
-                <div class="mt-10">
+                <div class="mt-10 flex justify-between">
                     <a class="button button-green" href="./category_add.php"><i class="fas fa-plus"></i> Thêm khách hàng</a>
+                    <form action="" method="get">
+                        <input type="text" name="search" value="<?= $search ?>" placeholder="Tìm kiếm dữ liệu..." require>
+                        <?php if ($gpage) { ?>
+                            <input type="hidden" name="page" value="<?= $gpage ?>">
+                        <?php } ?>
+                    </form>
                 </div>
                 <div class="box mt-10">
                     <table>
@@ -74,20 +92,42 @@ $dulieu = select("SELECT * FROM KHACHHANG");
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($dulieu as $item) { ?>
+                            <?php if ($soluong > 0) { ?>
+                                <?php foreach ($dulieu as $item) { ?>
+                                    <tr>
+                                        <td><?= $item["id"] ?></td>
+                                        <td><?= $item["hoten"] ?></td>
+                                        <td><?= $item["sodienthoai"] ?></td>
+                                        <td><?= $item["diachi"] ?></td>
+                                        <td><?= $item["email"] ?></td>
+                                        <td><img src="<?= $item["anh"] ?>" /></td>
+                                        <td> <a title="Sửa" href="./user_edit.php?id=<?= $item["id"] ?>"><i class="fas fa-edit color-blue"></i></a> <a title="Xoá" href="./user_delete.php?id=<?= $item["id"] ?>"><i class="fas fa-minus-circle"></i></a></td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } else { ?>
                                 <tr>
-                                    <td><?= $item["id"] ?></td>
-                                    <td><?= $item["hoten"] ?></td>
-                                    <td><?= $item["sodienthoai"] ?></td>
-                                    <td><?= $item["diachi"] ?></td>
-                                    <td><?= $item["email"] ?></td>
-                                    <td><img src="<?= $item["anh"] ?>" /></td>
-                                    <td> <a title="Sửa" href="./user_edit.php?id=<?= $item["id"] ?>"><i class="fas fa-edit color-blue"></i></a> <a title="Xoá" href="./user_delete.php?id=<?= $item["id"] ?>"><i class="fas fa-minus-circle"></i></a></td>
+                                    <td colspan="7" style="text-align: center">Không có dữ liệu nào</td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
+
+                <?php if ($soluong > 0) { ?>
+                    <div class="box page mt-10">
+                        <?php
+                        for ($i = 1; $i <= ceil($soluong / $max); ++$i) {
+                        ?><a href="./user.php?page=<?= $i ?><?php if ($search) {
+                                                                echo '&search=' . $search;
+                                                            } ?>" class="page-item<?php if ($gpage == $i) {
+                                                                                    echo ' page-current';
+                                                                                } ?>">
+                                <?= $i ?>
+                            </a><?php
+                            }
+                                ?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
 

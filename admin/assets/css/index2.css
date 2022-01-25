@@ -133,8 +133,8 @@ a {
   margin-top: 10px;
 }
 
-.overflow-auto{
-    overflow: auto;
+.overflow-auto {
+  overflow: auto;
 }
 
 .box {
@@ -303,10 +303,60 @@ a.button {
   background: #232323;
 }
 
-table img{
-    max-width: 100px;
+table img {
+  max-width: 100px;
 }
 
-.color-blue{
-    color: #003cff;
+.color-blue {
+  color: #003cff;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+textarea {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 8px;
+  height: 33px;
+  line-height: 19px;
+  color: #626262;
+  background: white;
+  border: 2px solid #d9d9d9;
+  border-radius: 2px;
+}
+
+input[type=text]:hover, input[type=email]:hover, input[type=url]:hover, input[type=search]:hover, textarea:hover {
+  border-color: #ccc;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=url]:focus, input[type=search]:focus, textarea:focus {
+  color: #3c3c3c;
+  background: white;
+  border-color: #3fb6f2;
+  outline: none;
+}
+
+/* end copy */
+
+.page {
+  padding: 5px;
+}
+
+.page > a {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 3px;
+  color: #000;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.page > a.page-current {
+  background-color: #a8a8a8;
+}
+
+.page > a + a {
+  margin-left: 3px;
 }
