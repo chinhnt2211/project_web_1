@@ -1,0 +1,140 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #ecedf1;
+}
+
+a{
+    text-decoration: none;
+    color: red;
+}
+
+.header{
+    background-color: dodgerblue;
+    flex: 1;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.max{
+    max-width: 1000px;
+}
+
+.h-full{
+    height: 100%;
+}
+
+.w-full{
+    width: 100%;
+}
+
+.mx-auto{
+    margin: 0 auto;
+}
+
+.nav{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.p-10{
+    padding: 10px;
+}
+
+.mt-10{
+    margin-top: 10px;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-col{
+    flex-direction: column;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.flex-1{
+    flex: 1;
+}
+
+.nav-menu{
+
+}
+
+.content-left{
+    max-width: 300px;
+    width: 100%;
+}
+
+.content-left ul{
+    list-style: none;
+}
+
+.content-left ul li{
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 1px 1px 0px #ccc;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+}
+
+.content-left ul li a{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: inherit;
+}
+
+.content-left ul li:hover{
+    background-color: #f3f3f3;
+}
+
+.content-left ul li i{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    background-color: #e3f1ff;
+    color: #449fff;
+}
+
+.content-left ul li.current{
+    background-color: #e3f1ff;
+    color: #449fff;
+}
+
+.content-left ul li.current i{
+    background-color: #fff;
+    color: #000;
+}
+
+.content-left ul li+li{
+    margin-top: 10px;
+}
+
+.box{
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 1px 1px 0px #ccc;
+    overflow: hidden;
+}
