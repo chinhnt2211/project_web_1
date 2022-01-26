@@ -55,6 +55,10 @@ a {
   margin-top: 10px;
 }
 
+.ml-10 {
+  margin-left: 10px;
+}
+
 .flex {
   display: flex;
 }
@@ -69,6 +73,10 @@ a {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.items-center{
+  align-items: center;
 }
 
 .flex-1 {
@@ -198,6 +206,11 @@ a.button {
   box-sizing: border-box;
 }
 
+.button:hover {
+  color: #243140;
+  background: #dcdfe7;
+}
+
 .button-blue {
   color: white;
   text-shadow: 0 1px rgba(0, 0, 0, 0.08);
@@ -312,9 +325,11 @@ table img {
 }
 
 input[type="text"],
+input[type="number"],
 input[type="email"],
 input[type="url"],
 input[type="search"],
+select,
 textarea {
   display: inline-block;
   vertical-align: top;
@@ -327,11 +342,23 @@ textarea {
   border-radius: 2px;
 }
 
-input[type=text]:hover, input[type=email]:hover, input[type=url]:hover, input[type=search]:hover, textarea:hover {
+input[type="text"]:hover,
+input[type="number"]:hover,
+input[type="email"]:hover,
+input[type="url"]:hover,
+input[type="search"]:hover,
+select:hover,
+textarea:hover {
   border-color: #ccc;
 }
 
-input[type=text]:focus, input[type=email]:focus, input[type=url]:focus, input[type=search]:focus, textarea:focus {
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+select:focus,
+textarea:focus {
   color: #3c3c3c;
   background: white;
   border-color: #3fb6f2;
@@ -359,4 +386,10 @@ input[type=text]:focus, input[type=email]:focus, input[type=url]:focus, input[ty
 
 .page > a + a {
   margin-left: 3px;
+}
+
+form input,
+form select,
+form textarea{
+  margin: 10px 0;
 }
