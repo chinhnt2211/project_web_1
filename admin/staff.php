@@ -18,7 +18,7 @@ if ($search) {
     $querySearch = " WHERE hoten LIKE '%" . addslashes($search) . "%'";
 }
 
-$dulieu = select("SELECT * FROM NHANVIEN " . $querySearch . " ORDER BY id DESC LIMIT 0, 10");
+$dulieu = select("SELECT * FROM NHANVIEN " . $querySearch . " ORDER BY id DESC LIMIT ".$page.", ".$max);
 $soluong = query("SELECT * FROM NHANVIEN " . $querySearch . "")->num_rows;
 ?>
 
@@ -34,7 +34,7 @@ $soluong = query("SELECT * FROM NHANVIEN " . $querySearch . "")->num_rows;
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 
-<body>
+<body id="wrap">
 
     <div class="header">
         <div class="max h-full mx-auto p-10">
