@@ -37,22 +37,7 @@ $soluong = query("SELECT * FROM theloai " . $querySearch . "")->num_rows;
 <body>
     <div id="wrap">
 
-        <div class="header">
-            <div class="max h-full mx-auto p-10">
-                Quản trị hệ thống
-            </div>
-        </div>
-
-        <div class="nav">
-            <div class="max flex justify-between mx-auto h-full p-10">
-                <div class="nav-menu">
-                    <a href="./">Trang chủ</a>
-                </div>
-                <div class="nav-user">
-                    Thoát
-                </div>
-            </div>
-        </div>
+        <?php include(__DIR__ . "/includes/head.php"); ?>
 
         <div class="flex-1">
 
@@ -70,7 +55,7 @@ $soluong = query("SELECT * FROM theloai " . $querySearch . "")->num_rows;
                 </div>
                 <div class="flex-1 p-10">
                     <h1><i class="fas fa-lg fa-folder"></i> Danh mục</h1>
-                    <div class="mt-10 flex justify-between">
+                    <div class="mt-10 flex justify-between items-center">
                         <a class="button button-green" href="./category_add.php"><i class="fas fa-plus"></i> Thêm danh mục</a>
                         <form action="" method="get">
                             <input type="text" name="search" value="<?= $search ?>" placeholder="Tìm kiếm dữ liệu..." require>
@@ -105,10 +90,10 @@ $soluong = query("SELECT * FROM theloai " . $querySearch . "")->num_rows;
                             <?php
                             for ($i = 1; $i <= ceil($soluong / $max); ++$i) {
                             ?><a href="./category.php?page=<?= $i ?><?php if ($search) {
-                                                                    echo '&search=' . $search;
-                                                                } ?>" class="page-item<?php if ($gpage == $i) {
-                                                                                    echo ' page-current';
-                                                                                } ?>">
+                                                                        echo '&search=' . $search;
+                                                                    } ?>" class="page-item<?php if ($gpage == $i) {
+                                                                                            echo ' page-current';
+                                                                                        } ?>">
                                     <?= $i ?>
                                 </a><?php
                                 }

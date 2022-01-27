@@ -32,22 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <div id="wrap">
 
-        <div class="header">
-            <div class="max h-full mx-auto p-10">
-                Quản trị hệ thống
-            </div>
-        </div>
-
-        <div class="nav">
-            <div class="max flex justify-between mx-auto h-full p-10">
-                <div class="nav-menu">
-                    <a href="./">Trang chủ</a>
-                </div>
-                <div class="nav-user">
-                    Thoát
-                </div>
-            </div>
-        </div>
+        <?php include(__DIR__ . "/includes/head.php"); ?>
 
         <div class="flex-1">
 
