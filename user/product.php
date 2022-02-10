@@ -132,28 +132,7 @@ function check_review_user()
         </div>
     </div>
     <div class="content-view container-description">
-        <div class="container-specifications">
-            <ul class="content-view">
-                <li>
-                    <span>Thể loại</span>
-                    <p><?= $item['theloai'] ?></p>
-                </li>
-                <li>
-                    <span>Nhà sản xuất</span>
-                    <p><?= $item['nhasanxuat'] ?></p>
-                </li>
-                <li>
-                    <span>Xuất xứ</span>
-                    <p><?= $item['xuatxu'] ?></p>
-                </li>
-                <li>
-                    <span>Thời gian ra mắt</span>
-                    <p><?= $item['ngayramat'] ?></p>
-                </li>
-            </ul>
-            <button class="open-model" id="open-model">Xem chi tiết thông số kĩ thuật</button>
-        </div>
-        <div class="wrapper-description">
+        <div class="wrapper-description" style="margin-top:20px">
             <p><?= nl2br($item['mota']) ?></p>
         </div>
     </div>
@@ -271,45 +250,6 @@ function check_review_user()
                 </div>
             </div>
         <?php } ?>
-    </div>
-</div>
-<div class="model-product" id="model-popup">
-    <div class="model-wrapper">
-        <div class="model-box">
-            <div class="model-card-normal">
-                <h2 class="card-title">
-                    Chi tiết thông số kỹ thuật <?= $item['ten'] ?>
-                    <i class="fas fa-times close-model-product" id="close-model" type="button"></i>
-                </h2>
-                <div class="card-body">
-                    <div class="card-content">
-                        <?php
-                        $i = 0;
-                        $str = $model[0]['ten_nhomcauhinh'];
-                        ?>
-                        <?php
-                        while ($i < sizeof($model)) {
-                            $str  = $model[$i]['ten_nhomcauhinh'];
-                        ?>
-                            <div class="card-content-row">
-                                <div class="st-table-title"><?= $str ?></div>
-                                <table class="st-table">
-                                    <tbody>
-                                        <?php while ($model[$i]['ten_nhomcauhinh'] == $str) { ?>
-                                            <tr>
-                                                <td><?= $model[$i]["ten_cauhinh"] ?></td>
-                                                <td><?= $model[$i]["giatri_cauhinh"] ?></td>
-                                            </tr>
-                                        <?php $i++;
-                                        }; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

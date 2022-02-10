@@ -25,11 +25,11 @@ $sum = 0;
         <div class="content-view main-menu">
             <div class="user-image" style="background-image: url('<?= $_SESSION['avatar'] ?>')"></div>
             <div class="content-view user-service">
-                <a class="service" href="">
+                <a class="service" href="./index.php">
                     <div class="service-icon"><i class="fas fa-user-alt"></i></div>
                     <div class="service-title"><span>Hồ sơ</span></div>
                 </a>
-                <a class="service" href="./cart.php">
+                <a class="service" href="">
                     <div class="service-icon"><i class="fas fa-shopping-basket"></i></div>
                     <div class="service-title active"><span>Giỏ hàng</span></div>
                 </a>
@@ -42,45 +42,45 @@ $sum = 0;
         <div class="content-view main-spot" action="./index.php" method="POST" enctype="multipart/form-data">
             <table>
                 <thead>
-                    <th>Ảnh</th>
+                    <th></th>
                     <th>Tên</th>
-                    <th>Giá</th>
+                    <th>Giá(đồng)</th>
                     <th>Số lượng</th>
-                    <th>Tổng tiền</th>
+                    <th>Tổng tiền(đồng)</th>
                     <th>Xóa</th>
                 </thead>
-                <tbody>
+                <tbody id="table-tbody-cart">
                     <?php foreach ($cart as $id => $each) : ?>
                         <tr>
-                            <td>
+                            <td class="td-image-product">
                                 <div class="image-product" style="background-image: url('<?= $each['image'] ?>');"></div>
                             </td>
-                            <td><?= $each['name'] ?></td>
-                            <td>
+                            <td class="td-name-product"><span><?= $each['name'] ?></span></td>
+                            <td class="td-price-product">
                                 <span class="span-price">
                                     <?= number_format($each['price'], 0, '.', ',') ?>
                                 </span>
                             </td>
-                            <td>
-                                <button class="btn-update-quantity" data-id="<?= $id ?>" data-type="decrease">-</button>
+                            <td class="td-quantity-product">
+                                <button class="btn-update-quantity" data-id="<?= $id ?>" data-type="decrease"><span>-</span></button>
                                 <span class="span-quantity">
                                     <?= $each['quantity'] ?>
                                 </span>
-                                <button class="btn-update-quantity" data-id="<?= $id ?>" data-type="increase">+</button>
+                                <button class="btn-update-quantity" data-id="<?= $id ?>" data-type="increase"><span>+</span></button>
                             </td>
-                            <td>
+                            <td class="td-sum-product">
                                 <span class="span-sum">
                                     <?= number_format($each['quantity'] * $each['price'], 0, '.', ',') ?>
                                 </span>
                             </td>
-                            <td>
+                            <td class="td-delete-product">
                                 <button class="btn-update-quantity" data-id="<?= $id ?>" data-type="delete">Xóa</button>
                             </td>
                         </tr>
                         <?php $sum += $each['quantity'] * $each['price'] ?>
                     <?php endforeach ?>
                 </tbody>
-                <tfoot>
+                <tfoot id="table-tfoot-cart">
                     <?php if (!empty($_SESSION['cart'])) { ?>
                         <tr class="total-cart">
                             <td></td>
@@ -96,86 +96,24 @@ $sum = 0;
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="background: #ee4d2d; border:0;">Đặt Hàng</button>
                             </td>
                         </tr>
-                    <?php $_SESSION["tongtien"] = $sum;
+                    <?php $_SESSION["total"] = $sum;
                     } ?>
                 </tfoot>
             </table>
         </div>
     </div>
-    <div class="container-cart">
-        <table>
-            <thead>
-                <th>Ảnh</th>
-                <th>Tên</th>
-                <th>Giá</th>
-                <th>Số lượng</th>
-                <th>Tổng tiền</th>
-                <th>Xóa</th>
-            </thead>
-            <tbody>
-                <?php foreach ($cart as $id => $each) : ?>
-                    <tr>
-                        <td>
-                            <div class="image-product" style="background-image: url('<?= $each['image'] ?>');"></div>
-                        </td>
-                        <td><?= $each['name'] ?></td>
-                        <td>
-                            <span class="span-price">
-                                <?= number_format($each['price'], 0, '.', ',') ?>
-                            </span>
-                        </td>
-                        <td>
-                            <button class="btn-update-quantity" data-id="<?= $id ?>" data-type="decrease">-</button>
-                            <span class="span-quantity">
-                                <?= $each['quantity'] ?>
-                            </span>
-                            <button class="btn-update-quantity" data-id="<?= $id ?>" data-type="increase">+</button>
-                        </td>
-                        <td>
-                            <span class="span-sum">
-                                <?= number_format($each['quantity'] * $each['price'], 0, '.', ',') ?>
-                            </span>
-                        </td>
-                        <td>
-                            <button class="btn-update-quantity" data-id="<?= $id ?>" data-type="delete">Xóa</button>
-                        </td>
-                    </tr>
-                    <?php $sum += $each['quantity'] * $each['price'] ?>
-                <?php endforeach ?>
-            </tbody>
-            <tfoot>
-                <?php if (!empty($_SESSION['cart'])) { ?>
-                    <tr class="total-cart">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <span class="span-total">
-                                <?= number_format($sum, 0, '.', ',') ?>
-                            </span>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="background: #ee4d2d; border:0;">Đặt Hàng</button>
-                        </td>
-                    </tr>
-                <?php $_SESSION["tongtien"] = $sum;
-                } ?>
-            </tfoot>
-        </table>
-    </div>
 </div>
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" name="form-buy-product">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myLargeModalLabel">Thông tin mua hàng </h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" name="close-form-buy">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form class="content-view main-spot" action="./index.php" method="POST" enctype="multipart/form-data">
+                <div class="content-view main-spot" action="./index.php" method="POST">
                     <div class="content-view form-profile">
                         <div class="form-input">
                             <span>Họ và Tên</span>
@@ -204,13 +142,16 @@ $sum = 0;
                         </div>
                     </div>
                     <div class="btn-save">
-                        <button class="save-info" type="submit">Lưu</button>
+                        <button class="save-info">Mua hàng</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<?php
+print_r($_SESSION['cart']);
+?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
@@ -230,39 +171,72 @@ $sum = 0;
                 })
                 .done(function(data) {
                     let parent_tr = btn.parents('tr');
-                    let quantity = parseInt(parent_tr.find('.span-quantity').text());
-                    let price = parseInt(parent_tr.find('.span-price').text());
-                    let sum = parseInt(parent_tr.find('.span-sum').text());
-                    let total = parseInt($('.span-total').text());
-
+                    let quantity = Number(parent_tr.find('.span-quantity').text());
+                    let price = Number(parent_tr.find('.span-price').text().replaceAll(",", ""));
+                    let sum = Number(parent_tr.find('.span-sum').text().replaceAll(",", ""));
+                    let total = Number($('.span-total').text().replaceAll(",", ""));
+                    let total_bill = $(".total-price span");
+                    let quantity_cart = Number($('span[name=quantity-product-cart]').val());
+                    console.log(price, quantity, total, parent_tr.find('.span-price').text().replaceAll(",", ""));
                     switch (data) {
                         case "increase":
                             quantity++;
                             total = total + price;
                             sum = sum + price;
-                            parent_tr.find('.span-quantity').text(quantity);
-                            parent_tr.find('.span-sum').text(sum);
-                            $('.span-total').text(total);
+                            parent_tr.find('.span-quantity').text(quantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                            parent_tr.find('.span-sum').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                            $('.span-total').text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                            $(".total-price span").text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                             break;
                         case "decrease":
                             quantity--;
                             total = total - price;
                             sum = sum - price;
-                            parent_tr.find('.span-quantity').text(quantity);
-                            parent_tr.find('.span-sum').text(sum);
-                            $('.span-total').text(total);
+                            parent_tr.find('.span-quantity').text(quantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                            parent_tr.find('.span-sum').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                            $('.span-total').text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                            $(".total-price span").text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                             break;
                         case "delete":
                             total = total - price * quantity;
                             if (total == 0) {
                                 $('tr.total-cart').remove();
+                            } else {
+                                $('.span-total').text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                                $(".total-price span").text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                             }
                             parent_tr.remove();
+                            if(quantity_cart>0){
+                                quantity_cart--;
+                            } 
+                            $('span[name=quantity-product-cart]').text(quantity_cart);
                             break;
                         default:
                             break;
                     }
                 });
+        });
+        $(".save-info").click(function() {
+            let name = $("input[name=name]").val();
+            let phone_number = $("input[name=phone_number]").val();
+            let address = $("input[name=address]").val();
+            $.ajax({
+                type: "POST",
+                url: "./process/process_cart.php",
+                data: {
+                    "name": name,
+                    "phone_number": phone_number,
+                    "address": address,
+                }
+            }).done(function(data) {
+                console.log(data);
+                $("#table-tbody-cart > tr").remove();
+                $("#table-tfoot-cart > tr").remove();
+                $('span[name=quantity-product-cart]').text("0");
+                $("button[ name=close-form-buy]").trigger('click');
+            }).fail(function(data) {
+
+            })
         })
     });
 </script>

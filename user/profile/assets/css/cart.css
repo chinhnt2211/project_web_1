@@ -18,8 +18,8 @@
     white-space: pre-wrap;
 }
 .image-product{
-    height: 200px;
-    width: 200px;
+    height: 80px;
+    width: 80px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,7 +42,8 @@
     min-height: 570px;
     border-radius: 18px;
     justify-content: space-between;
-    padding: 20px 0px;
+    padding: 0px 20px;
+    padding-bottom: 30px;
 }
 .main-content .main-menu{
     background-color: #fff;
@@ -180,4 +181,94 @@
 .main-spot .form-profile .error-message span {
     color: #ee4d2d;
     
+}
+/* Content */
+.main-spot table {
+}
+.main-spot table thead {
+    height: 60px;
+    margin: 20px 0px;
+}
+table thead tr th {
+    padding: 10px;
+    text-align: center;
+}
+table tbody tr td{
+    padding: 10px;
+}
+table .td-image-product{
+    height: 100px;
+    width: 100px;
+}
+table .td-name-product {
+    height: 100px;
+    width: 220px;
+}
+table .td-name-product span {
+    height: 100px;
+    width: 220px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    align-items: center;
+}
+table .td-price-product, table .td-sum-product{
+    width: 90px;
+}
+table .td-price-product span, table .td-sum-product span{
+    justify-content: center;
+    height : 100px;
+    width: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    align-items: center;
+}
+table .td-quantity-product{
+    height: 120px;
+    width: 120px;
+}
+table .td-quantity-product span{
+    padding: 5px;
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+}
+table .td-quantity-product button{
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    font-size: .875rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .1s cubic-bezier(.4,0,.6,1);
+    border: 1px solid rgba(0,0,0,.09);
+    border-radius: 2px;
+    background: transparent;
+    color: rgba(0,0,0,.8);
+    width: 30px;
+    height: 30px;
+}
+table .td-quantity-product button span {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+table .td-delete-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+}
+table .td-delete-product button {
+    background: #b31e00;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
 }

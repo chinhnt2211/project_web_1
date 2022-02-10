@@ -14,6 +14,7 @@ $(document).ready(function () {
 
             // }
         }).done(function (data) {
+            $('span[name=quantity-product-cart]').text(data);
             console.log(data);
         }).fail(function (data) {
             console.log(data);

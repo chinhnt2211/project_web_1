@@ -1,18 +1,201 @@
-
-.item{
+/* Global */
+.content-view{
+    box-sizing: border-box;
     display: flex;
-    border: 1px solid #ccc;
-    
-    padding: 10px;
-    color: black;
-    cursor: pointer;
+    position: relative;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-content: flex-start;
+    border: 0 solid #000;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
 }
-
-
+.content-text-v2{
+    box-sizing: border-box;
+    display: block;
+    font-size: 4.26667vw;
+    white-space: pre-wrap;
+}
 .image-product{
-    width: 40px;
-    height: 40px;
+    height: 80px;
+    width: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: none;
+}
+/* Content */
+.container-content{
+    width: 1190px;
+    margin: 40px auto;
+}
+.main-content{
+    flex-direction: row;
+    justify-content: space-between;
+}
+.main-content .main-spot{
+    width: 860px;
+    min-height: 570px;
+    padding: 0px 20px;
+    padding-bottom: 20px;
+}
+.main-content .main-menu{
+    background-color: #fff;
+    width: 310px;
+    height: 570px;
+    border-radius: 18px;
+}
+/* Menu */
+.main-menu .user-image{
+    width: 220px;
+    height: 220px;
+    margin: 40px auto;
+    border-radius: 18px;
+    position: relative;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+.main-menu .user-service {
+    border-top: 1px solid #e4e4e4;
+    width: 310px;
+    padding: 15px 15px;
+    height: 240px;
+}
+.main-menu .user-service .service {
+    border-bottom: 1px solid #e4e4e4;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 48px;
+    width: 280px;
+}
+.main-menu .user-service .service .service-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 5px;
+}
+.main-menu .user-service .service .service-title{
+    height: 48px;
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.main-menu .user-service .service .service-icon i {
+    font-size: 24px;
+}
+.main-menu .user-service .service .service-title span {
+    font-size: 16px;
+}
+.service .active {
+    color: #ccc;
+}
+/* Content */
+.main-spot table thead {
+    height: 45px;
+}
+.container-table {
+    background-color: #fff;
+    border-radius: 13px;
+    margin-bottom: 30px;
+    padding: 0px 20px;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
+}
+table{
+    width: 780px;
+}
+table thead tr th {
+    padding: 10px;
+    text-align: center;
+}
+table tbody{
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+table tbody tr td{
+    padding: 10px;
+}
+table .td-image-product{
+    height: 120px;
+    width: 120px;
+}
+table .td-name-product {
+    height: 100px;
+}
+table .td-name-product span {
+    height: 100px;
+    width: 220px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    align-items: center;
+}
+table .td-price-product, table .td-sum-product{
+    width: 150px;
+}
+table .td-sum-product span{
+    justify-content: center;
+    height :100px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    align-items: center;
+}
+table .td-quantity-product{
+    height: 100px;
+    width: 150px;
+}
+table .td-quantity-product span{
+    padding: 5px;
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+}
+table tfoot {
+    height: 60px;
+}
+tfoot tr td button {
+    height:40px;
+    width: 130px;
+    border-radius: 0;
+}
+/* Page Number */
+.page-number{
+    padding: 0px 20px;
+    height: 35px;
+    align-items: center;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+}
+.header-page-number{
+    font-size:16px;
+    font-weight: bold;
+}
+.page-number  .pre{
+    transform: rotate(180deg);
+}
+.page-number-title{
+    padding: 0px 10px;
+    display: block;
+    height: 35px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-number-title  i{
+    color: #000;
+    font-size: 20px;
 }
