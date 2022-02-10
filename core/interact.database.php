@@ -13,7 +13,7 @@ require_once __DIR__ . "/connect.php";
         ...
     ])
 */
-function insert(string $table, array $data): int
+function insert(string $table, array $data): string
 {
     global $mysqli;
     $column = [];
@@ -31,6 +31,7 @@ function insert(string $table, array $data): int
     $mysqli->query($query);
 
     return $mysqli->insert_id;
+    // return $query ;
 }
 
 

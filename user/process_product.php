@@ -29,8 +29,7 @@ try {
             "thoigian" => date("Y-m-d")
         ], "`id` = '$id_review'");
     }
-    echo 1;
+    echo sizeof($_SESSION['cart']);
 } catch (\Throwable $th) {
-    echo $th;
 }
 

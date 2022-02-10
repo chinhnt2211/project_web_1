@@ -70,7 +70,7 @@ require_once __DIR__ . "/../../core/core.user.php";
                             <div class="cart-user">
                                 <div class="cart-icon">
                                     <i class="fas fa-shopping-cart fa"></i>
-                                    <span>0</span>
+                                    <span name="quantity-product-cart"><?= sizeof($_SESSION['cart']) ?></span>
                                 </div>
                                 <span class="cart-text">Giỏ hàng</span>
                             </div>
