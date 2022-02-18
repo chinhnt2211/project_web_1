@@ -37,6 +37,7 @@ $soluong = query("SELECT * FROM NHASANXUAT " . $querySearch . "")->num_rows;
 <body>
     <div id="wrap">
 
+<<<<<<< HEAD:admin/brand/brand.php
         <div class="header">
             <div class="max h-full mx-auto p-10">
                 Quản trị hệ thống
@@ -54,6 +55,9 @@ $soluong = query("SELECT * FROM NHASANXUAT " . $querySearch . "")->num_rows;
                 </div>
             </div>
         </div>
+=======
+    <?php include(__DIR__."/includes/head.php"); ?>
+>>>>>>> origin/main:admin/brand.php
 
         <div class="flex-1">
 
@@ -70,7 +74,7 @@ $soluong = query("SELECT * FROM NHASANXUAT " . $querySearch . "")->num_rows;
                 </div>
                 <div class="flex-1 p-10">
                     <h1><i class="fas fa-lg fa-copyright"></i> Nhà sản xuất</h1>
-                    <div class="mt-10 flex justify-between">
+                    <div class="mt-10 flex justify-between items-center">
                         <a class="button button-green" href="./brand_add.php"><i class="fas fa-plus"></i> Thêm nhà sản xuất</a>
                         <form action="" method="get">
                             <input type="text" name="search" value="<?= $search ?>" placeholder="Tìm kiếm dữ liệu..." require>

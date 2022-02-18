@@ -34,8 +34,9 @@ $soluong = query("SELECT * FROM KHACHHANG " . $querySearch . "")->num_rows;
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 
-<body id="wrap">
+<div id="wrap">
 
+<<<<<<< HEAD:admin/user/user.php
     <div class="header">
         <div class="max h-full mx-auto p-10">
             Quản trị hệ thống
@@ -53,6 +54,9 @@ $soluong = query("SELECT * FROM KHACHHANG " . $querySearch . "")->num_rows;
             </div>
         </div>
     </div>
+=======
+    <?php include(__DIR__ . "/includes/head.php"); ?>
+>>>>>>> origin/main:admin/user.php
 
     <div class="flex-1">
 
@@ -69,8 +73,13 @@ $soluong = query("SELECT * FROM KHACHHANG " . $querySearch . "")->num_rows;
             </div>
             <div class="flex-1 p-10">
                 <h1><i class="fas fa-lg fa-user"></i> Khách hàng</h1>
+<<<<<<< HEAD:admin/user/user.php
                 <div class="mt-10 flex justify-between">
                     <!-- <a class="button button-green" href="./category_add.php"><i class="fas fa-plus"></i> Thêm khách hàng</a> -->
+=======
+                <div class="mt-10 flex justify-between items-center">
+                    <a class="button button-green" href="./user_add.php"><i class="fas fa-plus"></i> Thêm khách hàng</a>
+>>>>>>> origin/main:admin/user.php
                     <form action="" method="get">
                         <input type="text" name="search" value="<?= $search ?>" placeholder="Tìm kiếm dữ liệu..." require>
                         <?php if ($gpage) { ?>
@@ -120,12 +129,20 @@ $soluong = query("SELECT * FROM KHACHHANG " . $querySearch . "")->num_rows;
                     <div class="box page mt-10">
                         <?php
                         for ($i = 1; $i <= ceil($soluong / $max); ++$i) {
+<<<<<<< HEAD:admin/user/user.php
                         ?>
                             <a href="./user.php?page=<?= $i ?><?php if ($search) {
                                                                     echo '&search=' . $search;
                                                                 } ?>" class="page-item<?php if ($gpage == $i) {
                                                                                             echo ' page-current';
                                                                                         } ?>">
+=======
+                        ?><a href="./user.php?page=<?= $i ?><?php if ($search) {
+                                                                echo '&search=' . $search;
+                                                            } ?>" class="page-item<?php if ($gpage == $i) {
+                                                                                        echo ' page-current';
+                                                                                    } ?>">
+>>>>>>> origin/main:admin/user.php
                                 <?= $i ?>
                             </a>
                         <?php } ?>
@@ -135,6 +152,6 @@ $soluong = query("SELECT * FROM KHACHHANG " . $querySearch . "")->num_rows;
         </div>
 
     </div>
-</body>
+</div>
 
 </html>

@@ -37,6 +37,7 @@ $soluong = query("SELECT sp.*, nsx.ten as nsx_ten, tl.ten as tl_ten FROM SANPHAM
 
 <body>
     <div id="wrap">
+<<<<<<< HEAD:admin/product/product.php
         <div class="header">
             <div class="max h-full mx-auto p-10">
                 Quản trị hệ thống
@@ -53,6 +54,11 @@ $soluong = query("SELECT sp.*, nsx.ten as nsx_ten, tl.ten as tl_ten FROM SANPHAM
                 </div>
             </div>
         </div>
+=======
+
+        <?php include(__DIR__ . "/includes/head.php"); ?>
+
+>>>>>>> origin/main:admin/product.php
         <div class="flex-1">
             <div class="max mx-auto flex flex-row">
                 <div class="content-left p-10" style="overflow: auto;">
@@ -67,7 +73,7 @@ $soluong = query("SELECT sp.*, nsx.ten as nsx_ten, tl.ten as tl_ten FROM SANPHAM
                 </div>
                 <div class="flex-1 p-10 overflow-auto">
                     <h1><i class="fas fa-lg fa-cookie-bite"></i> Sản phẩm</h1>
-                    <div class="mt-10 flex justify-between">
+                    <div class="mt-10 flex justify-between items-center">
                         <a class="button button-green" href="./product_add.php"><i class="fas fa-plus"></i> Thêm sản phẩm</a>
                         <form action="" method="get">
                             <input type="text" name="search" value="<?= $search ?>" placeholder="Tìm kiếm dữ liệu..." require>
@@ -106,12 +112,22 @@ $soluong = query("SELECT sp.*, nsx.ten as nsx_ten, tl.ten as tl_ten FROM SANPHAM
                     </div>
                     <?php if ($soluong > 0) { ?>
                         <div class="box page mt-10">
+<<<<<<< HEAD:admin/product/product.php
                             <?php for ($i = 1; $i <= ceil($soluong / $max); ++$i) { ?>
                                 <a href="./product.php?page=<?= $i ?><?php if ($search) {
                                                                             echo '&search=' . $search;
                                                                         } ?>" class="page-item<?php if ($gpage == $i) {
                                                                                                     echo ' page-current';
                                                                                                 } ?>">
+=======
+                            <?php
+                            for ($i = 1; $i <= ceil($soluong / $max); ++$i) {
+                            ?><a href="./product.php?page=<?= $i ?><?php if ($search) {
+                                                                        echo '&search=' . $search;
+                                                                    } ?>" class="page-item<?php if ($gpage == $i) {
+                                                                                            echo ' page-current';
+                                                                                        } ?>">
+>>>>>>> origin/main:admin/product.php
                                     <?= $i ?>
                                 </a>
                             <?php } ?>

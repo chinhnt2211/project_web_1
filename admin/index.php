@@ -23,6 +23,7 @@ $dulieu = select("SELECT * FROM theloai");
 
 <body>
     <div id="wrap">
+<<<<<<< HEAD
         <div class="header">
             <div class="max h-full mx-auto p-10">
                 Quản trị hệ thống
@@ -39,6 +40,11 @@ $dulieu = select("SELECT * FROM theloai");
                 </div>
             </div>
         </div>
+=======
+
+        <?php include(__DIR__ . "/includes/head.php"); ?>
+
+>>>>>>> origin/main
         <div class="flex-1">
             <div class="max mx-auto flex flex-row">
                 <div class="content-left p-10" style="overflow: auto;">
