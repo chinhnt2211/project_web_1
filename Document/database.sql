@@ -53,18 +53,6 @@ CREATE TABLE NHASANXUAT(
     ten varchar(100) not null
 );
 
-CREATE TABLE NHOMCAUHINH(
-    id int not null primary key auto_increment,
-    ten varchar(100) not null
-);
-
-CREATE TABLE CAUHINH(
-    id int not null primary key auto_increment,
-    id_nhomcauhinh int DEFAULT NULL,
-    ten varchar(100) not null,
-    constraint fk_cauhinh_nch foreign key (id_nhomcauhinh) references NHOMCAUHINH(id)
-);
-
 CREATE TABLE SANPHAM(
     id int not null primary key auto_increment,
     ten varchar(100) not null,
@@ -79,15 +67,6 @@ CREATE TABLE SANPHAM(
     id_theloai int not null,
     constraint fk_sanpham_nsx foreign key (id_nhasanxuat) references NHASANXUAT(id),
     constraint fk_sanpham_tl foreign key (id_theloai) references THELOAI(id)
-);
-
-CREATE TABLE CAUHINHCHITIET(
-    id_sanpham int not null,
-    id_cauhinh int not null,
-    giatri int,
-    primary key (id_sanpham, id_cauhinh),
-    constraint fk_cauhinhchitiet_sp foreign key (id_sanpham) references SANPHAM(id),
-    constraint fk_cauhinhchitiet_ch foreign key (id_cauhinh) references CAUHINH(id)
 );
 
 CREATE TABLE HOADONCHITIET(
@@ -145,26 +124,6 @@ INSERT INTO `NHASANXUAT` (`id`, `ten`) VALUES
 (9, 'Asus'),
 (13, 'Acer');
 
---
--- Đang đổ dữ liệu cho bảng `CAUHINH`
---
-
-INSERT INTO `CAUHINH` (`id`, `ten`) VALUES
-(1, 'Kích thước màn hình'),
-(2, 'Loại màn hình'),
-(3, 'Độ phân giải'),
-(4, 'Tần số quét'),
-(5, 'Độ sáng'),
-(6, 'Tấm nền'),
-(7, 'Công nghệ màn hình'),
-(8, 'Độ phủ màu'),
-(10, 'Dung lượng RAM'),
-(11, 'Loại RAM'),
-(12, 'Tốc độ RAM'),
-(13, 'Số khe cắm rời'),
-(14, 'Số khe RAM còn lại'),
-(15, 'Số RAM onboard'),
-(16, 'Hỗ trợ RAM tối đa');
 
 --
 -- Đang đổ dữ liệu cho bảng `THELOAI`

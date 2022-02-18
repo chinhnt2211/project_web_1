@@ -4,7 +4,6 @@ try {
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $id = $_GET["id-product"];
         $quantity = $_GET["quantity"];
-        // unset($_SESSION['cart']);
         if (empty($_SESSION['cart'][$id])) {
             $sql = "SELECT * FROM SANPHAM
         WHERE id = '$id'";
@@ -28,8 +27,8 @@ try {
             "chatluong" => "$rating",
             "thoigian" => date("Y-m-d")
         ], "`id` = '$id_review'");
+        header("Location: ./product.php?id=$id");
     }
-    echo sizeof($_SESSION['cart']);
 } catch (\Throwable $th) {
 }
 

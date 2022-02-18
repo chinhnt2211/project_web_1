@@ -1,4 +1,0 @@
-#Hướng dẫn sử dụng
-demo_user.html : Giao diện trang người dùng
-demo_form_login : Trang đăng nhập của người dùng
-demo_form_signup : Trang đăng kí của người dùng

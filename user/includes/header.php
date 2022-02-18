@@ -17,7 +17,7 @@ require_once __DIR__ . "/../../core/core.user.php";
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Document</title>
+    <title>Tiki</title>
 </head>
 
 <body style="background-color:unset;">

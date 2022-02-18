@@ -128,12 +128,7 @@ $sum = 0;
                             <input type="text" name="address" value="<?= $address ?>">
                         </div>
                         <div class="error-message">
-                            <span>
-                                <?php
-                                if (isset($_SESSION["error"])) {
-                                    echo "*" . $_SESSION["error"];
-                                };
-                                ?>
+                            <span class="error-message-span">
                             </span>
                         </div>
                         <div class="total-price">
@@ -149,96 +144,8 @@ $sum = 0;
         </div>
     </div>
 </div>
-<?php
-print_r($_SESSION['cart']);
-?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $(".btn-update-quantity").click(function() {
-            let btn = $(this);
-            let id = $(this).data("id");
-            let type = $(this).data("type");
-            $.ajax({
-                    type: "GET",
-                    url: "./process/process_cart.php",
-                    data: {
-                        id,
-                        type
-                    },
-                    // dataType: "dataType",
-                })
-                .done(function(data) {
-                    let parent_tr = btn.parents('tr');
-                    let quantity = Number(parent_tr.find('.span-quantity').text());
-                    let price = Number(parent_tr.find('.span-price').text().replaceAll(",", ""));
-                    let sum = Number(parent_tr.find('.span-sum').text().replaceAll(",", ""));
-                    let total = Number($('.span-total').text().replaceAll(",", ""));
-                    let total_bill = $(".total-price span");
-                    let quantity_cart = Number($('span[name=quantity-product-cart]').val());
-                    console.log(price, quantity, total, parent_tr.find('.span-price').text().replaceAll(",", ""));
-                    switch (data) {
-                        case "increase":
-                            quantity++;
-                            total = total + price;
-                            sum = sum + price;
-                            parent_tr.find('.span-quantity').text(quantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                            parent_tr.find('.span-sum').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                            $('.span-total').text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                            $(".total-price span").text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                            break;
-                        case "decrease":
-                            quantity--;
-                            total = total - price;
-                            sum = sum - price;
-                            parent_tr.find('.span-quantity').text(quantity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                            parent_tr.find('.span-sum').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                            $('.span-total').text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                            $(".total-price span").text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                            break;
-                        case "delete":
-                            total = total - price * quantity;
-                            if (total == 0) {
-                                $('tr.total-cart').remove();
-                            } else {
-                                $('.span-total').text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                                $(".total-price span").text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                            }
-                            parent_tr.remove();
-                            if(quantity_cart>0){
-                                quantity_cart--;
-                            } 
-                            $('span[name=quantity-product-cart]').text(quantity_cart);
-                            break;
-                        default:
-                            break;
-                    }
-                });
-        });
-        $(".save-info").click(function() {
-            let name = $("input[name=name]").val();
-            let phone_number = $("input[name=phone_number]").val();
-            let address = $("input[name=address]").val();
-            $.ajax({
-                type: "POST",
-                url: "./process/process_cart.php",
-                data: {
-                    "name": name,
-                    "phone_number": phone_number,
-                    "address": address,
-                }
-            }).done(function(data) {
-                console.log(data);
-                $("#table-tbody-cart > tr").remove();
-                $("#table-tfoot-cart > tr").remove();
-                $('span[name=quantity-product-cart]').text("0");
-                $("button[ name=close-form-buy]").trigger('click');
-            }).fail(function(data) {
-
-            })
-        })
-    });
-</script>
+<script src="./assets/js/cart.js"></script>
 <!-- Footer -->
 <?php require_once("../includes/footer.php") ?>

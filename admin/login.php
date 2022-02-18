@@ -3,7 +3,6 @@ require_once(__DIR__ . "/../core/core.php");
 
 // hiển thị lỗi, nếu có lỗi
 $error_message = "";
-
 // kiểm tra thông tin đăng nhập
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = isset($_POST["email"]) ? addslashes($_POST["email"]) : NULL;
@@ -14,8 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $kiemtra = query("SELECT * FROM NHANVIEN WHERE email = '{$email}' and matkhau = '{$md5_password}'");
 
         if ($kiemtra->num_rows > 0) {
-            $_SESSION["staff_id"] = $kiemtra->fetch_assoc()["id"];
-            // Test nen ko de ban goc
+            $result = $kiemtra->fetch_assoc();
+            $_SESSION["staff_id"] = $result["id"];
+            $_SESSION["staff_level"] = $result["capdo"];
+            $_SESSION["staff_name"] = $result["hoten"];
             header("Location: ../admin/");
         } else {
             $error_message = "Tài khoản và mật khẩu vừa nhập không chính xác";

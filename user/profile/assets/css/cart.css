@@ -178,7 +178,7 @@
 .main-spot .form-profile .total-price span{
     text-transform: uppercase;
 }
-.main-spot .form-profile .error-message span {
+.main-spot .form-profile .error-message{
     color: #ee4d2d;
     
 }

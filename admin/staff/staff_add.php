@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . "/../core/core.php");
+require_once(__DIR__ . "/../../core/core.php");
 
 // hiển thị lỗi, nếu có lỗi
 $error_message = "";
@@ -7,32 +7,34 @@ $error_message = "";
 // kiểm tra thông tin form nhập đủ ko
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $hoten = isset($_POST["hoten"]) ? addslashes($_POST["hoten"]) : NULL;
-    $sdt = isset($_POST["sdt"]) ? addslashes($_POST["sdt"]) : NULL;
-    $diachi = isset($_POST["diachi"]) ? addslashes($_POST["diachi"]) : NULL;
-    $email = isset($_POST["email"]) ? addslashes($_POST["email"]) : NULL;
-    $matkhau = isset($_POST["matkhau"]) ? addslashes($_POST["matkhau"]) : NULL;
-    $anh = isset($_POST["anh"]) ? addslashes($_POST["anh"]) : NULL;
+    echo $hoten = isset($_POST["hoten"]) ? addslashes($_POST["hoten"]) : NULL;
+    echo $sdt = isset($_POST["sdt"]) ? addslashes($_POST["sdt"]) : NULL;
+    echo $diachi = isset($_POST["diachi"]) ? addslashes($_POST["diachi"]) : NULL;
+    echo $email = isset($_POST["email"]) ? addslashes($_POST["email"]) : NULL;
+    echo $matkhau = isset($_POST["matkhau"]) ? addslashes($_POST["matkhau"]) : NULL;
+    echo $anh = isset($_POST["anh"]) ? addslashes($_POST["anh"]) : NULL;
+    echo $capdo = isset($_POST["capdo"]) ? addslashes($_POST["capdo"]) : NULL;
 
     if ($hoten && $sdt && $diachi && $email && $matkhau && $anh) {
 
         // kiểm tra tên này đã được dùng chưa?
-        $kiemtra = query("SELECT * FROM KHACHHANG WHERE email = '{$email}'");
+        $kiemtra = query("SELECT * FROM NHANVIEN WHERE email = '{$email}'");
 
         if ($kiemtra->num_rows === 0) {
 
             $hashmd5 = md5($matkhau);
 
-            insert("KHACHHANG", [
+            insert("NHANVIEN", [
                 "hoten" => $hoten,
                 "sodienthoai" => $sdt,
                 "anh" => $anh,
                 "diachi" => $diachi,
                 "email" => $email,
-                "matkhau" => $hashmd5
+                "matkhau" => $hashmd5,
+                "capdo" => $capdo
             ]);
 
-            header("Location: ./user.php");
+            header("Location: ./staff.php");
         } else {
             $error_message = "Tên email này đã được tạo rồi, chọn tên khác đi";
         }
@@ -50,32 +52,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bảng điều khiển</title>
-    <link rel="stylesheet" href="./assets/css/index2.css">
+    <link rel="stylesheet" href="../assets/css/index2.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 
 <body>
     <div id="wrap">
 
-        <?php include(__DIR__ . "/includes/head.php"); ?>
-
+        <div class="header">
+            <div class="max h-full mx-auto p-10">
+                Quản trị hệ thống
+            </div>
+        </div>
+        <div class="nav">
+            <div class="max flex justify-between mx-auto h-full p-10">
+                <div class="nav-menu">
+                    <a href="./">Trang chủ</a>
+                </div>
+                <span><?= $sname ?></span>
+                <div class="nav-user">
+                    <a href="../logout.php">Thoát</a>
+                </div>
+            </div>
+        </div>
         <div class="flex-1">
-
             <div class="max mx-auto flex flex-row">
                 <div class="content-left p-10" style="overflow: auto;">
                     <ul>
-                        <li><a href="./"><i class="fas fa-lg fa-tachometer-alt"></i> Tổng quát</a></li>
-                        <li><a href="./category.php"><i class="fas fa-lg fa-folder"></i> Danh mục</a></li>
-                        <li><a href="./brand.php"><i class="fas fa-lg fa-copyright"></i> Nhà sản xuất</a></li>
-                        <li><a href="./product.php"><i class="fas fa-lg fa-cookie-bite"></i> Sản phẩm</a></li>
-                        <li class="current"><a href="./user.php"><i class="fas fa-lg fa-user"></i> Khách hàng</a></li>
-                        <li><a href="./staff.php"><i class="fas fa-lg fa-user-tie"></i> Nhân viên</a></li>
-                        <li><a href="./cart.html"><i class="fas fa-lg fa-shopping-cart"></i> Đơn hàng</a></li>
+                        <li><a href="../"><i class="fas fa-lg fa-tachometer-alt"></i> Tổng quát</a></li>
+                        <li><a href="../brand/brand.php"><i class="fas fa-lg fa-copyright"></i> Nhà sản xuất</a></li>
+                        <li><a href="../product/product.php"><i class="fas fa-lg fa-cookie-bite"></i> Sản phẩm</a></li>
+                        <li><a href="../user/user.php"><i class="fas fa-lg fa-user"></i> Khách hàng</a></li>
+                        <li class="current"><a href="./staff.php"><i class="fas fa-lg fa-user-tie"></i> Nhân viên</a></li>
+                        <li><a href="../cart/cart.php"><i class="fas fa-lg fa-shopping-cart"></i> Đơn hàng</a></li>
                     </ul>
                 </div>
                 <div class="flex-1 p-10">
-                    <h1><i class="fas fa-plus"></i> Thêm khách hàng</h1>
-
+                    <h1><i class="fas fa-edit"></i> Thêm nhân sự</h1>
                     <div class="box mt-10 p-10">
                         <form action="" method="POST">
                             <?php if ($error_message !== "") { ?>
@@ -95,16 +108,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <input name="matkhau" type="text" /><br>
                             Ảnh:<br>
                             <input name="anh" type="text" /><br>
-                            <input type="submit" class="button button-green" value="Thêm người dùng" />
+                            Cấp độ:<br>
+                            <select name="capdo">
+                                <option value="1">Nhân viên</option>
+                                <option value="0">Quản lý</option>
+                            </select><br>
+                            <input type="submit" value="Thêm người dùng" class="button button-blue mt-10" />
                         </form>
                     </div>
-
                     <div class="box mt-10 p-10">
-                        <a href="./user.php">Quay lại</a>
+                        <a href="./staff.php">Quay lại</a>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>
