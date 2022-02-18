@@ -86,6 +86,7 @@ function check_review_user()
 <!-- Content -->
 <style>
     @import url("./assets/css/product.css");
+    @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 </style>
 <div class="container-content">
     <div class="content-view main-content">
@@ -117,18 +118,17 @@ function check_review_user()
                             <input aria-label="quantity" class="input-qty" min="1" name="quantity" type="number" value="1">
                             <input class="plus is-form" type="button" value="+">
                         </div>
-                        <div>900 sản phẩm có sẵn</div>
                     </div>
                 </div>
                 <div class="item-btn-buy">
                     <input type="hidden" name="id-product" value="<?= $_GET["id"] ?>">
                     <?php if (isset($_SESSION["id"])) { ?>
-                        <button data-id-product="<?= $_GET["id"] ?>" class="btn-add-to-cart" >Thêm vào giỏ hàng</button>
+                        <button data-id-product="<?= $_GET["id"] ?>" class="btn-add-to-cart">Thêm vào giỏ hàng</button>
                     <?php } else { ?>
                         <button onclick="location.href='<?= DOMAIN ?>user/signing/signin.php'" type="button">Thêm vào giỏ hàng</button>
                     <?php } ?>
                 </div>
-                    </div>
+            </div>
         </div>
     </div>
     <div class="content-view container-description">
@@ -218,7 +218,7 @@ function check_review_user()
         ?>
             <form class="user-review-wrapper" method="post" action="./process_product.php">
                 <input type="hidden" name="id-product" value="<?= $_GET["id"] ?>">
-                <input type="hidden" name="id-review" value="<?= $user_reviews['id']?>">
+                <input type="hidden" name="id-review" value="<?= $user_reviews['id'] ?>">
                 <input type="hidden" name="rating-star" value="1">
                 <div class="avatar-user-review" style="background-image: url('<?= $_SESSION['avatar'] ?>');"></div>
                 <div class="user-review-content">
@@ -226,13 +226,13 @@ function check_review_user()
                     <span>
                         Bạn chấm sản phẩm này bao nhiêu sao?
                     </span>
-                    <div class="rating-star-input">
-                        <button class="one-star" type="button"></button>
-                        <button class="two-star" type="button"></button>
-                        <button class="three-star" type="button"></button>
-                        <button class="four-star" type="button"></button>
-                        <button class="five-star" type="button"></button>
-                    </div>
+                    <fieldset class="rating">
+                        <input type="radio" id="star5" name="rating-star" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                        <input type="radio" id="star4" name="rating-star" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                        <input type="radio" id="star3" name="rating-star" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2" name="rating-star" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                        <input type="radio" id="star1" name="rating-star" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                    </fieldset>
                 </div>
                 <div class="user-review-input">
                     <textarea name="comment" id="" cols="30" rows="10" placeholder="Gửi nhận xét về sản phẩm của bạn ở đây"></textarea>

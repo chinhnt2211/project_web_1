@@ -49,7 +49,7 @@ OFFSET $offset");
                 <div class="container-table">
                     <table>
                         <?php
-                        $result = select("SELECT SANPHAM.ten, SANPHAM.anh, SANPHAM.gia, HOADON.trangthaidon, HOADON.tongtien, HOADON.thoigiandat, HOADONCHITIET.soluong FROM ((HOADON
+                        $result = select("SELECT SANPHAM.id, SANPHAM.ten, SANPHAM.anh, SANPHAM.gia, HOADON.trangthaidon, HOADON.tongtien, HOADON.thoigiandat, HOADONCHITIET.soluong FROM ((HOADON
                         INNER JOIN HOADONCHITIET ON HOADON.id = HOADONCHITIET.id_hoadon ) 
                         INNER JOIN SANPHAM ON HOADONCHITIET.id_sanpham= SANPHAM.id) 
                         WHERE HOADON.id = '$each[id]'");
@@ -77,7 +77,7 @@ OFFSET $offset");
                                     <td class="td-image-product">
                                         <div class="image-product" style="background-image: url('<?= $item['anh'] ?>');"></div>
                                     </td>
-                                    <td class="td-name-product"><span><?= $item['ten'] ?></span></td>
+                                    <td class="td-name-product"><span><a href="../product.php?id=<?= $item['id']?>" style="color:black;"><?= $item['ten'] ?></a></span></td>
                                     <td class="td-quantity-product">
                                         <span class="span-quantity">
                                             x<?= $item['soluong'] ?>
