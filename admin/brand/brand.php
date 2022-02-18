@@ -37,7 +37,6 @@ $soluong = query("SELECT * FROM NHASANXUAT " . $querySearch . "")->num_rows;
 <body>
     <div id="wrap">
 
-<<<<<<< HEAD:admin/brand/brand.php
         <div class="header">
             <div class="max h-full mx-auto p-10">
                 Quản trị hệ thống
@@ -55,9 +54,6 @@ $soluong = query("SELECT * FROM NHASANXUAT " . $querySearch . "")->num_rows;
                 </div>
             </div>
         </div>
-=======
-    <?php include(__DIR__."/includes/head.php"); ?>
->>>>>>> origin/main:admin/brand.php
 
         <div class="flex-1">
 

@@ -35,7 +35,6 @@ $soluong = query("SELECT * FROM NHANVIEN " . $querySearch . "")->num_rows;
 </head>
 
 <body id="wrap">
-<<<<<<< HEAD:admin/staff/staff.php
     <div class="header">
         <div class="max h-full mx-auto p-10">
             Quản trị hệ thống
@@ -52,11 +51,6 @@ $soluong = query("SELECT * FROM NHANVIEN " . $querySearch . "")->num_rows;
             </div>
         </div>
     </div>
-=======
-
-    <?php include(__DIR__ . "/includes/head.php"); ?>
-
->>>>>>> origin/main:admin/staff.php
     <div class="flex-1">
         <div class="max mx-auto flex flex-row">
             <div class="content-left p-10" style="overflow: auto;">
@@ -71,15 +65,10 @@ $soluong = query("SELECT * FROM NHANVIEN " . $querySearch . "")->num_rows;
             </div>
             <div class="flex-1 p-10">
                 <h1><i class="fas fa-lg fa-user-tie"></i> Nhân viên</h1>
-<<<<<<< HEAD:admin/staff/staff.php
                 <div class="mt-10 flex justify-between">
                     <?php if($slevel == 0) { ?>
                         <a class="button button-green" href="./staff_add.php"><i class="fas fa-plus"></i> Thêm nhân viên</a>
                     <?php } ?>
-=======
-                <div class="mt-10 flex justify-between items-center">
-                    <a class="button button-green" href="./staff_add.php"><i class="fas fa-plus"></i> Thêm nhân viên</a>
->>>>>>> origin/main:admin/staff.php
                     <form action="" method="get">
                         <input type="text" name="search" value="<?= $search ?>" placeholder="Tìm kiếm dữ liệu..." require>
                         <?php if ($gpage) { ?>
@@ -127,7 +116,6 @@ $soluong = query("SELECT * FROM NHANVIEN " . $querySearch . "")->num_rows;
                 <?php if ($soluong > 0) { ?>
                     <div class="box page mt-10">
                         <?php
-<<<<<<< HEAD:admin/staff/staff.php
                         for ($i = 1; $i <= ceil($soluong / $max); ++$i) { ?>
                             <a href="./staff.php?page=<?= $i ?>
                                 <?php if ($search) {
@@ -135,14 +123,6 @@ $soluong = query("SELECT * FROM NHANVIEN " . $querySearch . "")->num_rows;
                                 } ?>" class="page-item<?php if ($gpage == $i) {
                                     echo ' page-current';
                                 } ?>">
-=======
-                        for ($i = 1; $i <= ceil($soluong / $max); ++$i) {
-                        ?><a href="./staff.php?page=<?= $i ?><?php if ($search) {
-                                                                    echo '&search=' . $search;
-                                                                } ?>" class="page-item<?php if ($gpage == $i) {
-                                                                                    echo ' page-current';
-                                                                                } ?>">
->>>>>>> origin/main:admin/staff.php
                                 <?= $i ?>
                             </a>
                         <?php } ?>

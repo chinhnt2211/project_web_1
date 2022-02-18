@@ -37,7 +37,6 @@ $soluong = query("SELECT sp.*, nsx.ten as nsx_ten, tl.ten as tl_ten FROM SANPHAM
 
 <body>
     <div id="wrap">
-<<<<<<< HEAD:admin/product/product.php
         <div class="header">
             <div class="max h-full mx-auto p-10">
                 Quản trị hệ thống
@@ -54,11 +53,6 @@ $soluong = query("SELECT sp.*, nsx.ten as nsx_ten, tl.ten as tl_ten FROM SANPHAM
                 </div>
             </div>
         </div>
-=======
-
-        <?php include(__DIR__ . "/includes/head.php"); ?>
-
->>>>>>> origin/main:admin/product.php
         <div class="flex-1">
             <div class="max mx-auto flex flex-row">
                 <div class="content-left p-10" style="overflow: auto;">
@@ -112,22 +106,12 @@ $soluong = query("SELECT sp.*, nsx.ten as nsx_ten, tl.ten as tl_ten FROM SANPHAM
                     </div>
                     <?php if ($soluong > 0) { ?>
                         <div class="box page mt-10">
-<<<<<<< HEAD:admin/product/product.php
                             <?php for ($i = 1; $i <= ceil($soluong / $max); ++$i) { ?>
                                 <a href="./product.php?page=<?= $i ?><?php if ($search) {
                                                                             echo '&search=' . $search;
                                                                         } ?>" class="page-item<?php if ($gpage == $i) {
                                                                                                     echo ' page-current';
                                                                                                 } ?>">
-=======
-                            <?php
-                            for ($i = 1; $i <= ceil($soluong / $max); ++$i) {
-                            ?><a href="./product.php?page=<?= $i ?><?php if ($search) {
-                                                                        echo '&search=' . $search;
-                                                                    } ?>" class="page-item<?php if ($gpage == $i) {
-                                                                                            echo ' page-current';
-                                                                                        } ?>">
->>>>>>> origin/main:admin/product.php
                                     <?= $i ?>
                                 </a>
                             <?php } ?>

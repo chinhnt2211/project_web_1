@@ -44,7 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <div id="wrap">
 
-<<<<<<< HEAD:admin/brand/brand_add.php
         <div class="header">
             <div class="max h-full mx-auto p-10">
                 Quản trị hệ thống
@@ -62,9 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
             </div>
         </div>
-=======
-        <?php include(__DIR__ . "/includes/head.php"); ?>
->>>>>>> origin/main:admin/brand_add.php
 
         <div class="flex-1">
 
